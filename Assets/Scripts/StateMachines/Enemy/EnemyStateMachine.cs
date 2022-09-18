@@ -18,6 +18,7 @@ public class EnemyStateMachine : StateMachine
    // [field: SerializeField, Header("Attack Settings")] public Damage AttackPoint { get; private set; }
     [field: SerializeField] public float AttackRange { get; private set; }
     [field: SerializeField] public int AttackDamage { get; private set; }
+    [field: SerializeField] public GameObject BloodFX { get; private set; }
     public SkinnedMeshRenderer[] Skins;
     public GameObject Player { get; private set; }
 
@@ -55,7 +56,7 @@ public class EnemyStateMachine : StateMachine
 
     private void HandleTakeDamage()
     {
-
+        Instantiate(BloodFX, transform.localPosition, Quaternion.identity);
     }
 
     private void HandleDie()
