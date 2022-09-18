@@ -1,11 +1,11 @@
 fileFormatVersion: 2
-guid: 748ce23401d369f4881e743cae8f4c56
+guid: 293b827cd0414a944886d8d95f319c66
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable:
   - first:
       74: -203655887218126122
-    second: ZombieWalk
+    second: ZombieIdle
   externalObjects: {}
   materials:
     materialImportMode: 2
@@ -31,7 +31,7 @@ ModelImporter:
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
     importConstraints: 0
-    animationCompression: 1
+    animationCompression: 3
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
@@ -40,11 +40,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: ZombieWalk
+      name: ZombieIdle
       takeName: mixamo.com
       internalID: 0
       firstFrame: 0
-      lastFrame: 242
+      lastFrame: 260
       wrapMode: 0
       orientationOffsetY: 0
       level: 0

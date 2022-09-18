@@ -11,17 +11,17 @@ public class Damage : MonoBehaviour
 
     private void OnEnable()
     {
-        if(gameObject.TryGetComponent<SphereCollider>(out SphereCollider sphereCollider))
-
         alreadyCollidedWith.Clear();
     }
     private void OnTriggerEnter(Collider other)
     {
         if (other == CharacterCollider && CharacterCollider != null) { return; }
 
-        if (alreadyCollidedWith.Contains(other)) { return; }
-
-        alreadyCollidedWith.Add(other);
+        if(!gameObject.CompareTag("Bullet"))
+        {
+            if (alreadyCollidedWith.Contains(other)) { return; }
+            alreadyCollidedWith.Add(other);
+        }
 
         if (other.TryGetComponent<Health>(out Health health))
         {

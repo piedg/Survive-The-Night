@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyIdleState : EnemyBaseState
 {
-    private readonly int LocomotionHash = Animator.StringToHash("Locomotion");
+    private readonly int LocomotionBlendTreeHash = Animator.StringToHash("LocomotionBlendTree");
     private readonly int SpeedHash = Animator.StringToHash("Speed");
 
     private const float CrossFadeduration = 0.1f;
@@ -14,7 +14,7 @@ public class EnemyIdleState : EnemyBaseState
 
     public override void Enter()
     {
-        stateMachine.Animator.CrossFadeInFixedTime(LocomotionHash, CrossFadeduration);
+        stateMachine.Animator.CrossFadeInFixedTime(LocomotionBlendTreeHash, CrossFadeduration);
     }
 
     public override void Tick(float deltaTime)

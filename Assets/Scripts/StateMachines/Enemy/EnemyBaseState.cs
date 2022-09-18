@@ -22,10 +22,6 @@ public abstract class EnemyBaseState : State
         stateMachine.Controller.Move((motion + stateMachine.ForceReceiver.Movement * stateMachine.MovementSpeed) * deltaTime);
     }
 
-    protected void MoveForward(float deltaTime)
-    {
-        stateMachine.Controller.Move(stateMachine.transform.forward * stateMachine.JumpForce * deltaTime);
-    }
 
     protected void FaceToPlayer()
     {
@@ -53,14 +49,5 @@ public abstract class EnemyBaseState : State
         return playerDistanceSqr <= stateMachine.PlayerChasingRange * stateMachine.PlayerChasingRange;
     }
 
-    protected bool HasJumpAttack()
-    {
-        return stateMachine.CooldownManager.CooldownTimeRemaining(stateMachine.JumpAttackCooldown.ToString()) <= 0;
-    }
-
-    protected bool HasMissileAttack()
-    {
-        return stateMachine.CooldownManager.CooldownTimeRemaining(stateMachine.MissileAttackCooldown.ToString()) <= 0;
-    }
 
 }

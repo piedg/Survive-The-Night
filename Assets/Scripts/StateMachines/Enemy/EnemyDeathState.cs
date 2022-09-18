@@ -4,13 +4,11 @@ using UnityEngine;
 
 public class EnemyDeathState : EnemyBaseState
 {
-    private readonly int DieHash = Animator.StringToHash("Die");
-    private const float CrossFadeduration = 0.1f;
     public EnemyDeathState(EnemyStateMachine stateMachine) : base(stateMachine) { }
 
     public override void Enter()
     {
-        stateMachine.Animator.CrossFadeInFixedTime(DieHash, CrossFadeduration);
+        stateMachine.Animator.enabled = false;
     }
 
     public override void Tick(float deltaTime) { }
