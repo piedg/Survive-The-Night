@@ -30,16 +30,6 @@ public class EnemyChasingState : EnemyBaseState
             stateMachine.SwitchState(new EnemyIdleState(stateMachine));
             return;
         }
-        else if (HasJumpAttack())
-        {
-            stateMachine.SwitchState(new EnemyJumpAttackState(stateMachine));
-            return;
-        }
-        else if (HasMissileAttack())
-        {
-            stateMachine.SwitchState(new EnemyShotMissileState(stateMachine));
-            return;
-        }
         else if (IsInAttackRange())
         {
             stateMachine.SwitchState(new EnemyAttackingState(stateMachine));

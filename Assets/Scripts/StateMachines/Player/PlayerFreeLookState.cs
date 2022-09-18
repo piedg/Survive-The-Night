@@ -102,7 +102,7 @@ public class PlayerFreeLookState : PlayerBaseState
                 //Set projectile 
                 projectile.transform.SetPositionAndRotation(stateMachine.FirePoint.transform.position, stateMachine.FirePoint.transform.rotation);
 
-                //projectile.GetComponent<Damage>().SetAttack(stateMachine.WeaponDamage);
+                projectile.GetComponent<Damage>().SetAttack(stateMachine.DamageAmount);
 
                 //Active from Pool
                 projectile.SetActive(true);

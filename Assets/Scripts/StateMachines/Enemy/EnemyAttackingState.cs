@@ -23,16 +23,8 @@ public class EnemyAttackingState : EnemyBaseState
 
         if (IsPlayingAnimation(stateMachine.Animator)) { return; }
 
-        if (HasJumpAttack())
-        {
-            stateMachine.SwitchState(new EnemyJumpAttackState(stateMachine));
-            return;
-        }
-        else
-        {
+    
             stateMachine.SwitchState(new EnemyChasingState(stateMachine));
-            return;
-        }
     }
 
     public override void Exit() { }

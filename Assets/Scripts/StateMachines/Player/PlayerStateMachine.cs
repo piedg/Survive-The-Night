@@ -17,8 +17,7 @@ public class PlayerStateMachine : StateMachine
     [field: SerializeField, Header("Shooting Settings")]public Transform FirePoint { get; private set; }
     [field: SerializeField] public float FireRate { get; private set; }
     [field: SerializeField] public GameObject FireFX { get; private set; }
-
-    //[field: SerializeField] public int WeaponDamage { get; private set; }
+    [field: SerializeField] public int DamageAmount { get; private set; }
     [field: SerializeField] public ObjectPool ProjectilePool { get; private set; }
 
     //public float DodgeDuration { get; private set; } = 0.75f;
