@@ -5417,6 +5417,8 @@ MonoBehaviour:
   <RotationSpeed>k__BackingField: 6
   <AttackRange>k__BackingField: 2
   <AttackDamage>k__BackingField: 1
+  <BloodFX>k__BackingField: {fileID: 3589871490463050741, guid: a5ef31170d878b24a8376f01159b7467,
+    type: 3}
   Skins: []
 --- !u!143 &4686557855605296353
 CharacterController:
@@ -5430,8 +5432,8 @@ CharacterController:
   m_Enabled: 1
   serializedVersion: 2
   m_Height: 2
-  m_Radius: 0.3
-  m_SlopeLimit: 45
+  m_Radius: 0.2
+  m_SlopeLimit: 1
   m_StepOffset: 0.3
   m_SkinWidth: 0.02
   m_MinMoveDistance: 0.001
@@ -5448,7 +5450,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15585fb8f5d9f2d4991f5e6f5493504a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 50
+  maxHealth: 20
 --- !u!114 &4686557855605296355
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5463,7 +5465,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Controller: {fileID: 4686557855605296353}
   Agent: {fileID: 4686557855605296364}
-  drag: 0.9
+  drag: 0.3
 --- !u!195 &4686557855605296364
 NavMeshAgent:
   m_ObjectHideFlags: 0

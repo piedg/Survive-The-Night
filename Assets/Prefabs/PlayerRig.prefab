@@ -16632,7 +16632,7 @@ MonoBehaviour:
   <DefaultMovementSpeed>k__BackingField: 4
   <DefaultRotationSpeed>k__BackingField: 6
   <FirePoint>k__BackingField: {fileID: 636673148}
-  <FireRate>k__BackingField: 0.25
+  <FireRate>k__BackingField: 0.15
   <FireFX>k__BackingField: {fileID: 605163521}
   <DamageAmount>k__BackingField: 10
   <ProjectilePool>k__BackingField: {fileID: 0}
@@ -16649,8 +16649,8 @@ CharacterController:
   serializedVersion: 2
   m_Height: 2
   m_Radius: 0.3
-  m_SlopeLimit: 45
-  m_StepOffset: 0.3
+  m_SlopeLimit: 1
+  m_StepOffset: 1
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 1, z: 0}
@@ -16693,7 +16693,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Controller: {fileID: 6862334048762427001}
   Agent: {fileID: 0}
-  drag: 0.3
+  drag: 1
 --- !u!114 &6862334048762426981
 MonoBehaviour:
   m_ObjectHideFlags: 0
