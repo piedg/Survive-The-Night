@@ -5412,7 +5412,7 @@ MonoBehaviour:
   <Health>k__BackingField: {fileID: 4686557855605296354}
   <ForceReceiver>k__BackingField: {fileID: 4686557855605296355}
   <Agent>k__BackingField: {fileID: 4686557855605296364}
-  <PlayerChasingRange>k__BackingField: 25
+  <PlayerChasingRange>k__BackingField: 999
   <MovementSpeed>k__BackingField: 3
   <RotationSpeed>k__BackingField: 6
   <AttackRange>k__BackingField: 2
@@ -5432,10 +5432,10 @@ CharacterController:
   m_Enabled: 1
   serializedVersion: 2
   m_Height: 2
-  m_Radius: 0.2
+  m_Radius: 0.4
   m_SlopeLimit: 1
   m_StepOffset: 0.3
-  m_SkinWidth: 0.02
+  m_SkinWidth: 0.04
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 1, z: 0}
 --- !u!114 &4686557855605296354

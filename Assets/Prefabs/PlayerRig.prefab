@@ -16605,7 +16605,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: 970982a4d36105542a3013b0fc94f599, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
-  m_ApplyRootMotion: 1
+  m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_WarningMessage: 
@@ -16629,11 +16629,13 @@ MonoBehaviour:
   <Animator>k__BackingField: {fileID: 6862334048762426982}
   <Health>k__BackingField: {fileID: 6862334048762427003}
   <ForceReceiver>k__BackingField: {fileID: 6862334048762426980}
-  <DefaultMovementSpeed>k__BackingField: 4
+  <DefaultMovementSpeed>k__BackingField: 6
   <DefaultRotationSpeed>k__BackingField: 6
   <FirePoint>k__BackingField: {fileID: 636673148}
   <FireRate>k__BackingField: 0.15
   <FireFX>k__BackingField: {fileID: 605163521}
+  <FireSFX>k__BackingField: {fileID: 8300000, guid: 0dbe91efb8ee94e6695ef0f552d202ce,
+    type: 3}
   <DamageAmount>k__BackingField: 10
   <ProjectilePool>k__BackingField: {fileID: 0}
 --- !u!143 &6862334048762427001
@@ -16649,9 +16651,9 @@ CharacterController:
   serializedVersion: 2
   m_Height: 2
   m_Radius: 0.3
-  m_SlopeLimit: 1
-  m_StepOffset: 1
-  m_SkinWidth: 0.08
+  m_SlopeLimit: 45
+  m_StepOffset: 0.25
+  m_SkinWidth: 0.03
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 1, z: 0}
 --- !u!114 &6862334048762427002

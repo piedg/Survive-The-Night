@@ -9,6 +9,9 @@ public class EnemyDeathState : EnemyBaseState
     public override void Enter()
     {
         stateMachine.Animator.enabled = false;
+        stateMachine.Controller.enabled = false;
+        ZombieSpawner.ZombiesInScene.Remove(stateMachine.gameObject);
+        GameObject.Destroy(stateMachine.gameObject, 3f);
     }
 
     public override void Tick(float deltaTime) { }
