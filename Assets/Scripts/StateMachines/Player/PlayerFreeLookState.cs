@@ -95,9 +95,7 @@ public class PlayerFreeLookState : PlayerBaseState
             stateMachine.transform.rotation = Quaternion.Slerp(stateMachine.transform.rotation, targetRotation, stateMachine.DefaultRotationSpeed * deltaTime);
 
             return;
-
         }
-
     }
 
     private void OnDodge()

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DayCycle : MonoBehaviour
+public class DayNightCycle : MonoBehaviour
 {
     public float speedAcceleration = 5f;
     // Start is called before the first frame update
