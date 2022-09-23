@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerFreeLookState : PlayerBaseState
 {
@@ -12,6 +13,7 @@ public class PlayerFreeLookState : PlayerBaseState
     private float nextFire;
 
     Vector3 direction;
+    Quaternion lastLookDir;
 
     float forwardAmount;
     float rightAmount;
@@ -61,23 +63,42 @@ public class PlayerFreeLookState : PlayerBaseState
     private void FaceToMouse(float deltaTime)
     {
         // Handle player rotation to mouse position
-          Ray ray = Camera.main.ScreenPointToRay(stateMachine.InputManager.MouseValue);
+        if (Keyboard.current != null && Mouse.current != null && !Gamepad.current.IsPressed())
+        {
+            Ray ray = Camera.main.ScreenPointToRay(stateMachine.InputManager.MouseValue);
 
-          Plane virtualPlane = new Plane(Vector3.up, stateMachine.transform.position);
+            Plane virtualPlane = new Plane(Vector3.up, stateMachine.transform.position);
 
-          if (virtualPlane.Raycast(ray, out float hitDist))
-          {
-            Vector3 hitPoint = ray.GetPoint(hitDist);
+            if (virtualPlane.Raycast(ray, out float hitDist))
+            {
+                Vector3 hitPoint = ray.GetPoint(hitDist);
 
-            var targetRotation = Quaternion.LookRotation(hitPoint - stateMachine.transform.position);
+                var targetRotation = Quaternion.LookRotation(hitPoint - stateMachine.transform.position);
+
+                // Smoothly rotate towards the target point.
+                stateMachine.transform.rotation = Quaternion.Slerp(stateMachine.transform.rotation, targetRotation, stateMachine.DefaultRotationSpeed * deltaTime);
+
+                return;
+            }
+        }
+        else if (Gamepad.current.IsPressed() && !Mouse.current.IsPressed()) 
+        {
+            // Gamepad
+             Vector3 direction = new Vector3(stateMachine.InputManager.MouseValue.x, 0, stateMachine.InputManager.MouseValue.y);
+             stateMachine.transform.rotation = Quaternion.LookRotation(direction);
+
+            var targetRotation = Quaternion.LookRotation(direction - stateMachine.transform.position);
 
             // Smoothly rotate towards the target point.
             stateMachine.transform.rotation = Quaternion.Slerp(stateMachine.transform.rotation, targetRotation, stateMachine.DefaultRotationSpeed * deltaTime);
-          } 
 
-        // Gamepad
-        /* Vector3 direction = new Vector3(stateMachine.InputManager.MouseValue.x, 0, stateMachine.InputManager.MouseValue.y);
-         stateMachine.transform.rotation = Quaternion.LookRotation(direction); */
+            return;
+
+        }
+
+
+
+
     }
 
     private void OnDodge()

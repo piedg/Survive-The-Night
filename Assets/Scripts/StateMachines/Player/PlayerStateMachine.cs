@@ -9,6 +9,7 @@ public class PlayerStateMachine : StateMachine
     [field: SerializeField] public Animator Animator { get; private set; }
     [field: SerializeField] public Health Health { get; private set; }
     [field: SerializeField] public ForceReceiver ForceReceiver { get; private set; }
+    [field: SerializeField] public Ragdoll Ragdoll { get; private set; }
     [field: SerializeField, Header("Movement Settings")] public float DefaultMovementSpeed { get; private set; }
     [field: SerializeField] public float DefaultRotationSpeed { get; private set; }
     [field: SerializeField, Header("Shooting Settings")]public Transform FirePoint { get; private set; }
@@ -25,34 +26,23 @@ public class PlayerStateMachine : StateMachine
 
     private void OnEnable()
     {
-       // Health.OnTakeDamage += HandleTakeDamage;
-       // Health.OnDie += HandleDie;
+       Health.OnTakeDamage += HandleTakeDamage;
+       Health.OnDie += HandleDie;
     }
     private void OnDisable()
     {
-       // Health.OnTakeDamage -= HandleTakeDamage;
-       // Health.OnDie -= HandleDie;
+       Health.OnTakeDamage -= HandleTakeDamage;
+       Health.OnDie -= HandleDie;
     }
 
     void HandleTakeDamage()
     {
         // TODO: Create a TakeDamageState
-        //StartCoroutine(TakeDamage());   
-    }
-
-    IEnumerator TakeDamage()
-    {
-      //  Health.SetInvulnerable(true);
-        yield return new WaitForSeconds(5f);
-      //  Health.SetInvulnerable(false);
     }
 
     void HandleDie()
     {
-
-        // TODO: Create a DeadState
-        // TEMP SOLUTION
-        Animator.enabled = false;
+        Ragdoll.ToggleRagdoll(this);
         this.enabled = false;
     }
 }

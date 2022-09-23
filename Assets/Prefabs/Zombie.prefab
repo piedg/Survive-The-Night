@@ -1,5 +1,64 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3387371553873004660
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 925958249115298537}
+  - component: {fileID: 4361584936750072019}
+  - component: {fileID: 398906794360110657}
+  m_Layer: 8
+  m_Name: AttackPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &925958249115298537
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3387371553873004660}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4635008021953025063}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &4361584936750072019
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3387371553873004660}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.75, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &398906794360110657
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3387371553873004660}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe366a4de6b0e0d419e3fd04f5839ad7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CharacterCollider: {fileID: 4686557855605296353}
 --- !u!1 &4636458098691812083
 GameObject:
   m_ObjectHideFlags: 0
@@ -785,7 +844,7 @@ GameObject:
   - component: {fileID: 4647707641165899}
   m_Layer: 7
   m_Name: LowerLeg_R
-  m_TagString: Untagged
+  m_TagString: Ragdoll
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1166,7 +1225,7 @@ GameObject:
   - component: {fileID: 4925485468986391}
   m_Layer: 7
   m_Name: Neck
-  m_TagString: Untagged
+  m_TagString: Ragdoll
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2141,7 +2200,7 @@ GameObject:
   - component: {fileID: 4857649596801971}
   m_Layer: 7
   m_Name: LowerLeg_L
-  m_TagString: Untagged
+  m_TagString: Ragdoll
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3201,7 +3260,7 @@ GameObject:
   - component: {fileID: 4248135319215438}
   m_Layer: 7
   m_Name: UpperLeg_L
-  m_TagString: Untagged
+  m_TagString: Ragdoll
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4018,7 +4077,7 @@ GameObject:
   - component: {fileID: 4478842004958892}
   m_Layer: 7
   m_Name: UpperLeg_R
-  m_TagString: Untagged
+  m_TagString: Ragdoll
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4129,7 +4188,7 @@ GameObject:
   - component: {fileID: 4985618058252258}
   m_Layer: 7
   m_Name: Spine_01
-  m_TagString: Untagged
+  m_TagString: Ragdoll
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5239,7 +5298,7 @@ GameObject:
   - component: {fileID: 4800407785640506}
   m_Layer: 7
   m_Name: Clavicle_R
-  m_TagString: Untagged
+  m_TagString: Ragdoll
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5351,6 +5410,7 @@ GameObject:
   - component: {fileID: 4686557855605296354}
   - component: {fileID: 4686557855605296355}
   - component: {fileID: 4686557855605296364}
+  - component: {fileID: 7011746180946144249}
   m_Layer: 8
   m_Name: Zombie
   m_TagString: Enemy
@@ -5372,6 +5432,7 @@ Transform:
   m_Children:
   - {fileID: 4633315193026749413}
   - {fileID: 8488515858222064468}
+  - {fileID: 925958249115298537}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5412,10 +5473,12 @@ MonoBehaviour:
   <Health>k__BackingField: {fileID: 4686557855605296354}
   <ForceReceiver>k__BackingField: {fileID: 4686557855605296355}
   <Agent>k__BackingField: {fileID: 4686557855605296364}
+  <Ragdoll>k__BackingField: {fileID: 7011746180946144249}
   <PlayerChasingRange>k__BackingField: 999
   <MovementSpeed>k__BackingField: 3
   <RotationSpeed>k__BackingField: 6
-  <AttackRange>k__BackingField: 2
+  <AttackPoint>k__BackingField: {fileID: 398906794360110657}
+  <AttackRange>k__BackingField: 1.5
   <AttackDamage>k__BackingField: 1
   <BloodFX>k__BackingField: {fileID: 3589871490463050741, guid: a5ef31170d878b24a8376f01159b7467,
     type: 3}
@@ -5479,7 +5542,7 @@ NavMeshAgent:
   m_Speed: 1
   m_Acceleration: 0
   avoidancePriority: 50
-  m_AngularSpeed: 0
+  m_AngularSpeed: 6
   m_StoppingDistance: 1
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
@@ -5488,6 +5551,20 @@ NavMeshAgent:
   m_BaseOffset: -0.01
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 2
+--- !u!114 &7011746180946144249
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4636977356763221859}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6a6de49d9d699b43bc93304f2160c5b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 4686557855605296365}
+  controller: {fileID: 4686557855605296353}
 --- !u!1 &4636991353315554925
 GameObject:
   m_ObjectHideFlags: 0
@@ -5700,7 +5777,7 @@ GameObject:
   - component: {fileID: 4300117092097922}
   m_Layer: 7
   m_Name: Clavicle_L
-  m_TagString: Untagged
+  m_TagString: Ragdoll
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6493,7 +6570,7 @@ GameObject:
   - component: {fileID: 4352189569182587}
   m_Layer: 7
   m_Name: Hips
-  m_TagString: Untagged
+  m_TagString: Ragdoll
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

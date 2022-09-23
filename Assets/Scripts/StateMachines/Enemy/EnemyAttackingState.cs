@@ -11,14 +11,14 @@ public class EnemyAttackingState : EnemyBaseState
 
     public override void Enter()
     {
-        //stateMachine.AttackPoint.SetAttack(stateMachine.AttackDamage);
+        stateMachine.AttackPoint.SetAttack(stateMachine.AttackDamage);
         stateMachine.Animator.CrossFadeInFixedTime(AttackHash, TransitionDuration);
     }
 
     public override void Tick(float deltaTime)
     {
-        if (stateMachine.Animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.4f && stateMachine.Animator.GetCurrentAnimatorStateInfo(0).normalizedTime < 1f) { return; }
 
+        if (stateMachine.Animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.4f && stateMachine.Animator.GetCurrentAnimatorStateInfo(0).normalizedTime < 1f) { Move(deltaTime); return; }
         RotateToPlayer(deltaTime);
 
         if (IsPlayingAnimation(stateMachine.Animator)) { return; }

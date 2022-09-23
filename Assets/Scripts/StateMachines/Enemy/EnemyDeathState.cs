@@ -8,7 +8,7 @@ public class EnemyDeathState : EnemyBaseState
 
     public override void Enter()
     {
-        stateMachine.Animator.enabled = false;
+        stateMachine.Ragdoll.ToggleRagdoll(true);
         stateMachine.Controller.enabled = false;
         ZombieSpawner.ZombiesInScene.Remove(stateMachine.gameObject);
         GameObject.Destroy(stateMachine.gameObject, 3f);

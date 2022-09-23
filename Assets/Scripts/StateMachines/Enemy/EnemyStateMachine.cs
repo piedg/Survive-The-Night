@@ -11,11 +11,12 @@ public class EnemyStateMachine : StateMachine
     [field: SerializeField] public Health Health { get; private set; }
     [field: SerializeField] public ForceReceiver ForceReceiver { get; private set; }
     [field: SerializeField] public NavMeshAgent Agent { get; private set; }
+    [field: SerializeField] public Ragdoll Ragdoll { get; private set; }
     //[field: SerializeField] public CooldownManager CooldownManager { get; private set; }
     [field: SerializeField, Header("Movement Settings")] public float PlayerChasingRange { get; private set; }
     [field: SerializeField] public float MovementSpeed { get; private set; }
     [field: SerializeField] public float RotationSpeed { get; private set; }
-   // [field: SerializeField, Header("Attack Settings")] public Damage AttackPoint { get; private set; }
+    [field: SerializeField, Header("Attack Settings")] public Damage AttackPoint { get; private set; }
     [field: SerializeField] public float AttackRange { get; private set; }
     [field: SerializeField] public int AttackDamage { get; private set; }
     [field: SerializeField] public GameObject BloodFX { get; private set; }
@@ -24,6 +25,7 @@ public class EnemyStateMachine : StateMachine
 
     private void Start()
     {
+        MovementSpeed = Random.Range(MovementSpeed, 6f);
         Skins = GetComponentsInChildren<SkinnedMeshRenderer>();
 
         Skins[Random.Range(0, Skins.Length - 1)].enabled = true;
@@ -34,12 +36,12 @@ public class EnemyStateMachine : StateMachine
 
     public void Attack()
     {
-        //AttackPoint.gameObject.SetActive(true);
+        AttackPoint.gameObject.SetActive(true);
     }
 
     public void FinishAttack()
     {
-    //    AttackPoint.gameObject.SetActive(false);
+        AttackPoint.gameObject.SetActive(false);
     }
 
     private void OnEnable()
