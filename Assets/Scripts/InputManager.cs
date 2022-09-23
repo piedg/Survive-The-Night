@@ -12,6 +12,7 @@ public class InputManager : MonoBehaviour, Controls.IPlayerActions
     public bool IsShooting { get; private set; }
 
     public event Action DodgeEvent;
+    public event Action ActionEvent_1;
 
     private Controls controls;
 
@@ -54,5 +55,11 @@ public class InputManager : MonoBehaviour, Controls.IPlayerActions
         {
             IsShooting = false;
         }
+    }
+
+    public void OnAction_1(InputAction.CallbackContext context)
+    {
+        if (!context.performed) { return; }
+        ActionEvent_1?.Invoke();
     }
 }

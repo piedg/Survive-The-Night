@@ -21,6 +21,7 @@ public class PlayerFreeLookState : PlayerBaseState
 
     public override void Enter()
     {
+        stateMachine.InputManager.ActionEvent_1 += OnAction_1;
         //stateMachine.InputManager.DodgeEvent += OnDodge;
         stateMachine.Animator.CrossFadeInFixedTime(FreeLookBlendTreeHash, CrossFadeDuration);
     }
@@ -44,6 +45,7 @@ public class PlayerFreeLookState : PlayerBaseState
     }
 
     public override void Exit() {
+        stateMachine.InputManager.ActionEvent_1 -= OnAction_1;
         //stateMachine.InputManager.DodgeEvent -= OnDodge;
     }
 
@@ -63,7 +65,7 @@ public class PlayerFreeLookState : PlayerBaseState
     private void FaceToMouse(float deltaTime)
     {
         // Handle player rotation to mouse position
-        if (Keyboard.current != null && Mouse.current != null && !Gamepad.current.IsPressed())
+        if (Keyboard.current != null && Mouse.current != null)
         {
             Ray ray = Camera.main.ScreenPointToRay(stateMachine.InputManager.MouseValue);
 
@@ -95,9 +97,6 @@ public class PlayerFreeLookState : PlayerBaseState
             return;
 
         }
-
-
-
 
     }
 
@@ -135,6 +134,10 @@ public class PlayerFreeLookState : PlayerBaseState
         {
             stateMachine.FireFX.gameObject.SetActive(false);
         }
+    }
 
+    private void OnAction_1()
+    {
+        stateMachine.Flashlight.SetActive(!stateMachine.Flashlight.activeSelf);
     }
 }

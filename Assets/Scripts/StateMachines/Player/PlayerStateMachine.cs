@@ -18,6 +18,7 @@ public class PlayerStateMachine : StateMachine
     [field: SerializeField] public AudioClip FireSFX { get; private set; }
     [field: SerializeField] public int DamageAmount { get; private set; }
     [field: SerializeField] public ObjectPool ProjectilePool { get; private set; }
+    [field: SerializeField] public GameObject Flashlight { get; private set; }
 
     private void Start()
     {
