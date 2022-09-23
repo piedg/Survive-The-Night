@@ -9,6 +9,7 @@ public class ForceReceiver : MonoBehaviour
     [SerializeField] private NavMeshAgent Agent;
     [SerializeField] private float drag = 0.3f;
 
+    private float GravityForce = -9.81f;
     private Vector3 dampingVelocity;
     private Vector3 impact;
     private float verticalVelocity;
@@ -19,13 +20,12 @@ public class ForceReceiver : MonoBehaviour
     {
         if (verticalVelocity < 0f && Controller.isGrounded)
         {
-            verticalVelocity = Physics.gravity.y * Time.deltaTime;
+            verticalVelocity = GravityForce * Time.deltaTime;
         }
         else
         {
-            verticalVelocity += Physics.gravity.y * Time.deltaTime;
+            verticalVelocity += GravityForce * Time.deltaTime;
         }
-
 
         impact = Vector3.SmoothDamp(impact, Vector3.zero, ref dampingVelocity, drag);
 
