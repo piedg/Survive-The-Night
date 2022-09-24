@@ -5,8 +5,7 @@ using UnityEngine.AI;
 
 public class EnemyStateMachine : StateMachine
 {
-    [field: SerializeField, Header("Main Components")]
-    public CharacterController Controller { get; private set; }
+    [field: SerializeField, Header("Main Components")] public CharacterController Controller { get; private set; }
     [field: SerializeField] public Animator Animator { get; private set; }
     [field: SerializeField] public Health Health { get; private set; }
     [field: SerializeField] public ForceReceiver ForceReceiver { get; private set; }

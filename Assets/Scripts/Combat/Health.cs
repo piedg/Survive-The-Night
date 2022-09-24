@@ -11,6 +11,7 @@ public class Health : MonoBehaviour
     private bool isInvulnerable;
 
     public event Action OnTakeDamage;
+    public event Action OnTakeHeal;
     public event Action OnDie;
 
     public bool IsDead => health == 0;
@@ -23,6 +24,20 @@ public class Health : MonoBehaviour
     public void SetInvulnerable(bool isInvulnerable)
     {
         this.isInvulnerable = isInvulnerable;
+    }
+
+    public void SetFullHealth()
+    {
+        health = maxHealth;
+    }
+
+    public void Heal(int value)
+    {
+        health = Mathf.Min(health + value, maxHealth);
+
+        OnTakeHeal?.Invoke();
+
+        //Debug.Log("Current health " + health + " heal recevied " + value);
     }
 
     public void DealDamage(int damage)
@@ -39,6 +54,6 @@ public class Health : MonoBehaviour
             OnDie?.Invoke();
         }
 
-        Debug.Log("Current health " + health + " damage recevied " + damage);
+        //Debug.Log("Current health " + health + " damage recevied " + damage);
     }
 }

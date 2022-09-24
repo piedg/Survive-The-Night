@@ -22,7 +22,6 @@ public abstract class EnemyBaseState : State
         stateMachine.Controller.Move((motion + stateMachine.ForceReceiver.Movement * stateMachine.MovementSpeed) * deltaTime);
     }
 
-
     protected void FaceToPlayer()
     {
         if (stateMachine.Player == null) { return; }

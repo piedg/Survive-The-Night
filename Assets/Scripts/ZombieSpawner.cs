@@ -6,6 +6,7 @@ public class ZombieSpawner : MonoBehaviour
 {
     Transform[] spawnPoints;
     public GameObject Zombie;
+    public ObjectPool ZombiePool;
     public static List<GameObject> ZombiesInScene = new List<GameObject>();
     public float time;
     public int maxZombiesSpawn = 25;
@@ -28,11 +29,10 @@ public class ZombieSpawner : MonoBehaviour
                 float randomNumber = Random.Range(Mathf.Min(1, currentZombieToSpawn), currentZombieToSpawn);
                 for (int i = 1; i <= randomNumber; i++)
                 {
-                    GameObject zombie = Instantiate(
-                        Zombie,
-                        GetRandomSpawnPoint(spawnPoints), 
-                        Quaternion.identity);
+                    GameObject zombie = ZombiePool.GetObjectFromPool();
+                    zombie.transform.SetPositionAndRotation(GetRandomSpawnPoint(spawnPoints), Quaternion.identity);
 
+                    zombie.SetActive(true);
                     ZombiesInScene.Add(zombie);
                 }
                 currentZombieToSpawn++;
