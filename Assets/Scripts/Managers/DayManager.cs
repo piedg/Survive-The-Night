@@ -23,7 +23,7 @@ public class DayManager : MonoBehaviour
     {
         if(days == 2)
         {
-            Debug.Log("Hai vinto!");
+            UIManager.Instance.EnableWinningPanel(true);
             Time.timeScale = 0;
             return;
         }

@@ -6,12 +6,18 @@ using UnityEngine.UI;
 public class UIManager : MonoSingleton<UIManager>
 {
     public Image DamagePanelBackground;
+    public GameObject WinningPanel;
+
     Color color;
-    float timer;
 
     private void Start()
     {
         color = DamagePanelBackground.color;
+    }
+
+    public void EnableWinningPanel(bool enable)
+    {
+        WinningPanel.SetActive(enable);
     }
    
     public void SetDamageBgColor()

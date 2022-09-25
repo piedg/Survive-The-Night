@@ -5,6 +5,7 @@ using UnityEngine;
 public class ZombieSpawner : MonoBehaviour
 {
     Transform[] spawnPoints;
+    Dictionary<string, Transform> spawnMap = new Dictionary<string, Transform>();
     public GameObject Zombie;
     public ObjectPool ZombiePool;
     public static List<GameObject> ZombiesInScene = new List<GameObject>();
@@ -15,7 +16,13 @@ public class ZombieSpawner : MonoBehaviour
     void Start()
     {
         ZombiesInScene.Clear();
+
         spawnPoints = GetComponentsInChildren<Transform>();
+
+        foreach (var spawnPoint in spawnPoints)
+        {
+            spawnMap.Add(spawnPoint.name, spawnPoint);
+        }
 
         StartCoroutine(Spawn(time));
     }
@@ -26,7 +33,7 @@ public class ZombieSpawner : MonoBehaviour
         {
             if (ZombiesInScene.Count < maxZombiesSpawn)
             {
-                float randomNumber = Random.Range(Mathf.Min(1, currentZombieToSpawn), currentZombieToSpawn);
+                float randomNumber = Random.Range(1, currentZombieToSpawn);
                 for (int i = 1; i <= randomNumber; i++)
                 {
                     GameObject zombie = ZombiePool.GetObjectFromPool();
@@ -41,7 +48,6 @@ public class ZombieSpawner : MonoBehaviour
             }
             else
             {
-                Debug.Log("Stop spawn, Zombie in Scene: " + ZombiesInScene.Count);
                 currentZombieToSpawn = maxZombiesSpawn;
                 yield return null;
             }
@@ -56,6 +62,11 @@ public class ZombieSpawner : MonoBehaviour
         float randomZ = Random.Range(randomSpawnPointPos.z - 2f, randomSpawnPointPos.z + 2f);
 
         return new Vector3(randomX, randomSpawnPointPos.y, randomZ);
+    }
+
+    public void ActiveSpawnPoint(string name)
+    {
+        spawnMap[name].gameObject.SetActive(true);
     }
 
 }
