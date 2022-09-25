@@ -36,11 +36,13 @@ public class ZombieSpawner : MonoBehaviour
                     ZombiesInScene.Add(zombie);
                 }
                 currentZombieToSpawn++;
+                Debug.Log("Zombie in scene " + ZombiesInScene.Count + " CurrentZombieToSpawn " + currentZombieToSpawn);
                 yield return new WaitForSeconds(time);
             }
             else
             {
                 Debug.Log("Stop spawn, Zombie in Scene: " + ZombiesInScene.Count);
+                currentZombieToSpawn = maxZombiesSpawn;
                 yield return null;
             }
         }

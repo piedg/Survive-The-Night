@@ -21,6 +21,13 @@ public class DayManager : MonoBehaviour
 
     void Update()
     {
+        if(days == 2)
+        {
+            Debug.Log("Hai vinto!");
+            Time.timeScale = 0;
+            return;
+        }
+
         timeLapsed += Time.deltaTime;
 
         if(timeLapsed > DayDurationInSeconds)
