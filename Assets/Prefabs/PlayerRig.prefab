@@ -14897,10 +14897,10 @@ Light:
   m_Type: 0
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 20
-  m_Range: 45
-  m_SpotAngle: 131.42978
-  m_InnerSpotAngle: 82.90812
+  m_Intensity: 60
+  m_Range: 60
+  m_SpotAngle: 120
+  m_InnerSpotAngle: 0
   m_CookieSize: 10
   m_Shadows:
     m_Type: 1
@@ -14991,7 +14991,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1199552165}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.5, z: 0.9}
+  m_LocalPosition: {x: 0.069, y: 1.193, z: 1.05}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -17026,7 +17026,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15585fb8f5d9f2d4991f5e6f5493504a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 50
+  maxHealth: 10
 --- !u!114 &6862334048762426980
 MonoBehaviour:
   m_ObjectHideFlags: 0

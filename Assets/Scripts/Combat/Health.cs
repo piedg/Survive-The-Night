@@ -8,6 +8,7 @@ public class Health : MonoBehaviour
     [SerializeField] private int maxHealth = 100;
 
     private int health;
+    public int CurrentHealth { get { return health; } }
     private bool isInvulnerable;
 
     public event Action OnTakeDamage;
@@ -36,8 +37,6 @@ public class Health : MonoBehaviour
         health = Mathf.Min(health + value, maxHealth);
 
         OnTakeHeal?.Invoke();
-
-        //Debug.Log("Current health " + health + " heal recevied " + value);
     }
 
     public void DealDamage(int damage)
@@ -53,7 +52,5 @@ public class Health : MonoBehaviour
         {
             OnDie?.Invoke();
         }
-
-        //Debug.Log("Current health " + health + " damage recevied " + damage);
     }
 }

@@ -38,6 +38,7 @@ public class PlayerStateMachine : StateMachine
 
     void HandleTakeDamage()
     {
+        Debug.Log("Current Health " + Health.CurrentHealth);
         // TODO: Create a TakeDamageState
     }
 

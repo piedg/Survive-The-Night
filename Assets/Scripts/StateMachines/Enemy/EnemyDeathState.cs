@@ -11,26 +11,22 @@ public class EnemyDeathState : EnemyBaseState
     {
         stateMachine.Ragdoll.ToggleRagdoll(true);
         stateMachine.Controller.enabled = false;
-        //GameObject.Destroy(stateMachine.gameObject, 3f);
     }
 
     public override void Tick(float deltaTime) 
     {
-        if(timeToDisable > 0f)
+        if (timeToDisable < 0f)
         {
-            timeToDisable -= deltaTime;
-            Debug.Log(timeToDisable);
-        }
-        else
-        {
-            stateMachine.gameObject.SetActive(false);
-            ZombieSpawner.ZombiesInScene.Remove(stateMachine.gameObject);
             timeToDisable = 5f;
             stateMachine.Health.SetFullHealth();
             stateMachine.Ragdoll.ToggleRagdoll(false);
             stateMachine.Controller.enabled = true;
             stateMachine.SwitchState(new EnemyIdleState(stateMachine));
+            ZombieSpawner.ZombiesInScene.Remove(stateMachine.gameObject);
+            stateMachine.gameObject.SetActive(false);
         }
+
+        timeToDisable -= deltaTime;
     }
 
     public override void Exit() { }
