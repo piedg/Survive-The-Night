@@ -5,17 +5,18 @@ using UnityEngine;
 public class DayManager : MonoBehaviour
 {
     [SerializeField, Range(0, 24)] float StartingTime = 7;
-    [SerializeField, Range(0, 24)] private float TimeOfDay;
+    [SerializeField, Range(0, 24)] private float CurrentTime;
     [SerializeField] private float DayDurationInSeconds = 300f;
 
     private int days = 1;
     public int Days { get { return days; } }
 
     float timeLapsed;
+    float timePercent;
 
     void Start()
     {
-        TimeOfDay = StartingTime;
+        CurrentTime = StartingTime;
     }
 
     void Update()
@@ -28,9 +29,9 @@ public class DayManager : MonoBehaviour
             timeLapsed -= DayDurationInSeconds;
         }
 
-        TimeOfDay += Time.deltaTime / (DayDurationInSeconds / 24f);
-        TimeOfDay %= 24f;
-        float timePercent = TimeOfDay / 24f;
+        CurrentTime += Time.deltaTime / (DayDurationInSeconds / 24f);
+        CurrentTime %= 24f;
+        timePercent = CurrentTime / 24f;
 
         transform.localRotation = Quaternion.Euler(new Vector3((timePercent * 360f) - 90f, 170f, 0));
     }
