@@ -23,8 +23,6 @@ public class DayManager : MonoBehaviour
     {
         if(days == 2)
         {
-            UIManager.Instance.EnableWinningPanel(true);
-            Time.timeScale = 0;
             return;
         }
 

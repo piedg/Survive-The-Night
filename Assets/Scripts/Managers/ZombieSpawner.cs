@@ -29,7 +29,7 @@ public class ZombieSpawner : MonoBehaviour
 
     IEnumerator Spawn(float time)
     {
-        while(true)
+        while(!GameManager.Instance.IsEndGame)
         {
             if (ZombiesInScene.Count < maxZombiesSpawn)
             {

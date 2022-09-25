@@ -7,12 +7,16 @@ public class UIManager : MonoSingleton<UIManager>
 {
     public Image DamagePanelBackground;
     public GameObject WinningPanel;
+    public Button RestartGameBtn;
 
     Color color;
+
+
 
     private void Start()
     {
         color = DamagePanelBackground.color;
+        RestartGameBtn.onClick.AddListener(() => GameManager.Instance.RestartGame());
     }
 
     public void EnableWinningPanel(bool enable)

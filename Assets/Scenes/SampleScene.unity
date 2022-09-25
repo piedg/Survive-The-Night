@@ -2209,6 +2209,50 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee9d1c507a7a0ab48808d81933b98cea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1516468811
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1516468813}
+  - component: {fileID: 1516468812}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1516468812
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1516468811}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c6815aacbb09b140b633aa6bbf2f3a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1516468813
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1516468811}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1657999957
 GameObject:
   m_ObjectHideFlags: 0
@@ -2822,6 +2866,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DamagePanelBackground: {fileID: 839091697}
   WinningPanel: {fileID: 1657999957}
+  RestartGameBtn: {fileID: 268526144}
 --- !u!1 &2117642088
 GameObject:
   m_ObjectHideFlags: 0
@@ -2951,26 +2996,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 596530958429806971, guid: d6e4156aceb9d1d42bdda61ee26f7502,
-        type: 3}
-      propertyPath: m_Name
-      value: SpawnPoint4
-      objectReference: {fileID: 0}
-    - target: {fileID: 596530958517056516, guid: d6e4156aceb9d1d42bdda61ee26f7502,
-        type: 3}
-      propertyPath: m_Name
-      value: SpawnPoint1
-      objectReference: {fileID: 0}
-    - target: {fileID: 596530959938005756, guid: d6e4156aceb9d1d42bdda61ee26f7502,
-        type: 3}
-      propertyPath: m_Name
-      value: SpawnPoint3
-      objectReference: {fileID: 0}
-    - target: {fileID: 596530960071655775, guid: d6e4156aceb9d1d42bdda61ee26f7502,
-        type: 3}
-      propertyPath: m_Name
-      value: SpawnPoint2
-      objectReference: {fileID: 0}
     - target: {fileID: 596530960365140130, guid: d6e4156aceb9d1d42bdda61ee26f7502,
         type: 3}
       propertyPath: ZombiePool
@@ -3114,21 +3139,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1189975182008415741, guid: 8956f50024460b741a8baea9183fc1bf,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.153
-      objectReference: {fileID: 0}
-    - target: {fileID: 1189975182008415741, guid: 8956f50024460b741a8baea9183fc1bf,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.107
-      objectReference: {fileID: 0}
-    - target: {fileID: 1189975182008415741, guid: 8956f50024460b741a8baea9183fc1bf,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0.076
-      objectReference: {fileID: 0}
     - target: {fileID: 6802904218823291472, guid: 8956f50024460b741a8baea9183fc1bf,
         type: 3}
       propertyPath: m_RootOrder
