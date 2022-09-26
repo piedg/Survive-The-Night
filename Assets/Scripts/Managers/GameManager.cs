@@ -4,14 +4,13 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class GameManager : MonoSingleton<GameManager>
 {
-    DayManager DayManager;
-    public bool IsEndGame => DayManager.Days == 2;
+    [SerializeField] DayManager DayManager;
+    public bool IsEndGame => DayManager?.Days == 2;
     public bool IsWinningState => ZombieSpawner.ZombiesInScene.Count == 0;
 
     private void Start()
     {
         Time.timeScale = 1;
-        DayManager = FindObjectOfType<DayManager>();  
     }
 
     void Update()
@@ -28,6 +27,21 @@ public class GameManager : MonoSingleton<GameManager>
 
     public void RestartGame()
     {
+        SceneManager.LoadScene(1);
+    }
+
+    public void StartGame()
+    {
+        SceneManager.LoadScene(1);
+    }
+
+    public void BackMainMenu()
+    {
         SceneManager.LoadScene(0);
+    }
+
+    public void ExitGame()
+    {
+        Application.Quit();
     }
 }
