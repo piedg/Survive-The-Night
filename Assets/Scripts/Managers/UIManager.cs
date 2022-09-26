@@ -6,18 +6,41 @@ using UnityEngine.UI;
 public class UIManager : MonoSingleton<UIManager>
 {
     public Image DamagePanelBackground;
+    
+    [Header("PausePanel")]
+    public GameObject PausePanel;
+    public Button BackMainMenuOnPauseBtn;
+    public Button ResumeOnPauseBtn;
+    public Button SettingsOnPauseBtn;
+
+    [Header("WinningPanel")]
     public GameObject WinningPanel;
-    public Button RestartGameBtn;
-    public Button BackMainMenuBtn;
+    public Button RestartGameOnWinBtn;
+    public Button BackMainMenuOnWinBtn;
+
+    public GameObject DeathPanel;
+
 
     Color color;
-
 
     private void Start()
     {
         color = DamagePanelBackground.color;
-        RestartGameBtn.onClick.AddListener(() => GameManager.Instance.RestartGame());
-        BackMainMenuBtn.onClick.AddListener(() => GameManager.Instance.BackMainMenu());
+
+        RestartGameOnWinBtn.onClick.AddListener(() => GameManager.Instance.RestartGame());
+        BackMainMenuOnWinBtn.onClick.AddListener(() => GameManager.Instance.BackMainMenu());
+        ResumeOnPauseBtn.onClick.AddListener(() => GameManager.Instance.ResumeGame());
+        BackMainMenuOnPauseBtn.onClick.AddListener(() => GameManager.Instance.BackMainMenu());
+    }
+
+    public void EnableDeathPanel(bool enable)
+    {
+        DeathPanel.SetActive(enable);
+    }
+
+    public void EnablePausePanel(bool enable)
+    {
+        PausePanel.SetActive(enable);
     }
 
     public void EnableWinningPanel(bool enable)

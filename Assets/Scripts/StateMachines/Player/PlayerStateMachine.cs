@@ -19,9 +19,13 @@ public class PlayerStateMachine : StateMachine
     [field: SerializeField] public int DamageAmount { get; private set; }
     [field: SerializeField] public ObjectPool ProjectilePool { get; private set; }
     [field: SerializeField] public GameObject Flashlight { get; private set; }
+    [field: SerializeField] public bool IsDead { get; private set; }
+
 
     private void Start()
     {
+        IsDead = false;
+
         SwitchState(new PlayerFreeLookState(this));
     }
 
@@ -40,11 +44,11 @@ public class PlayerStateMachine : StateMachine
     {
         Debug.Log("Current Health " + Health.CurrentHealth);
         UIManager.Instance.SetDamageBgColor();
-        // TODO: Create a TakeDamageState
     }
 
     void HandleDie()
     {
+        IsDead = true;
         Ragdoll.ToggleRagdoll(this);
         this.enabled = false;
     }

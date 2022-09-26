@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class InputManager : MonoBehaviour, Controls.IPlayerActions
+public class InputManager : MonoSingleton<InputManager>, Controls.IPlayerActions
 {
     public Vector2 MovementValue { get; private set; }
     public Vector2 MouseValue { get; private set; }
@@ -13,6 +13,7 @@ public class InputManager : MonoBehaviour, Controls.IPlayerActions
 
     public event Action DodgeEvent;
     public event Action ActionEvent_1;
+    public event Action OnPauseButton;
 
     private Controls controls;
 
@@ -61,5 +62,11 @@ public class InputManager : MonoBehaviour, Controls.IPlayerActions
     {
         if (!context.performed) { return; }
         ActionEvent_1?.Invoke();
+    }
+
+    public void OnPause(InputAction.CallbackContext context)
+    {
+        if (!context.performed) { return; }
+        OnPauseButton?.Invoke();
     }
 }

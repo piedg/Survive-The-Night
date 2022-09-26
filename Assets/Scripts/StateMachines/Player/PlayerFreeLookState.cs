@@ -13,7 +13,6 @@ public class PlayerFreeLookState : PlayerBaseState
     private float nextFire;
 
     Vector3 direction;
-    Quaternion lastLookDir;
 
     float forwardAmount;
     float rightAmount;
@@ -22,7 +21,6 @@ public class PlayerFreeLookState : PlayerBaseState
     public override void Enter()
     {
         stateMachine.InputManager.ActionEvent_1 += OnAction_1;
-        //stateMachine.InputManager.DodgeEvent += OnDodge;
         stateMachine.Animator.CrossFadeInFixedTime(FreeLookBlendTreeHash, CrossFadeDuration);
     }
 
@@ -46,7 +44,6 @@ public class PlayerFreeLookState : PlayerBaseState
 
     public override void Exit() {
         stateMachine.InputManager.ActionEvent_1 -= OnAction_1;
-        //stateMachine.InputManager.DodgeEvent -= OnDodge;
     }
 
     void ConvertDirection(Vector3 direction)
@@ -79,13 +76,13 @@ public class PlayerFreeLookState : PlayerBaseState
 
                 // Smoothly rotate towards the target point.
                 stateMachine.transform.rotation = Quaternion.Slerp(stateMachine.transform.rotation, targetRotation, stateMachine.DefaultRotationSpeed * deltaTime);
-
-                return;
             }
         }
         else if (Gamepad.current.IsPressed() && !Mouse.current.IsPressed()) 
         {
             // Gamepad
+            if(stateMachine.InputManager.MouseValue == Vector2.zero) { return; }
+
              Vector3 direction = new Vector3(stateMachine.InputManager.MouseValue.x, 0, stateMachine.InputManager.MouseValue.y);
              stateMachine.transform.rotation = Quaternion.LookRotation(direction);
 
@@ -93,27 +90,17 @@ public class PlayerFreeLookState : PlayerBaseState
 
             // Smoothly rotate towards the target point.
             stateMachine.transform.rotation = Quaternion.Slerp(stateMachine.transform.rotation, targetRotation, stateMachine.DefaultRotationSpeed * deltaTime);
-
-            return;
         }
-    }
-
-    private void OnDodge()
-    {
-        //if(HasDodge())
-           // stateMachine.SwitchState(new PlayerDodgeState(stateMachine, direction));
     }
 
     private void OnShoot()
     {
-        // stateMachine.SwitchState(new PlayerShootingState(stateMachine));
         if (stateMachine.InputManager.IsShooting)
         {
             stateMachine.FireFX.gameObject.SetActive(true);
 
             if (Time.fixedTime > nextFire)
             {
-
                 nextFire = Time.fixedTime + stateMachine.FireRate;
 
                 GameObject projectile = stateMachine.ProjectilePool.GetObjectFromPool();
