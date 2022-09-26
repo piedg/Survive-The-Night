@@ -8,6 +8,7 @@ public class GameManager : MonoSingleton<GameManager>
 
     PlayerStateMachine Player;
 
+    public bool IsPause;
     public bool IsEndGame => DayManager?.Days == 2;
     public bool IsWinningState => ZombieSpawner.ZombiesInScene.Count == 0;
 
@@ -51,12 +52,15 @@ public class GameManager : MonoSingleton<GameManager>
 
     public void HandlePause()
     {
+        IsPause = true;
         Time.timeScale = 0;
         UIManager.Instance.EnablePausePanel(true);
     }
 
     public void ResumeGame()
     {
+        IsPause = false;
+
         Time.timeScale = 1;
         UIManager.Instance.EnablePausePanel(false);
     }

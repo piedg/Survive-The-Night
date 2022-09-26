@@ -48,7 +48,9 @@ public class InputManager : MonoSingleton<InputManager>, Controls.IPlayerActions
 
     public void OnShoot(InputAction.CallbackContext context)
     {
-        if(context.performed)
+        if (GameManager.Instance.IsPause) { return; }
+
+        if (context.performed)
         {
             IsShooting = true;
         }
@@ -60,6 +62,8 @@ public class InputManager : MonoSingleton<InputManager>, Controls.IPlayerActions
 
     public void OnAction_1(InputAction.CallbackContext context)
     {
+        if (GameManager.Instance.IsPause) { return; }
+
         if (!context.performed) { return; }
         ActionEvent_1?.Invoke();
     }
