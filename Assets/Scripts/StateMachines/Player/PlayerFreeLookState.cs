@@ -65,7 +65,6 @@ public class PlayerFreeLookState : PlayerBaseState
         if (Keyboard.current != null && Mouse.current != null)
         {
             Ray ray = Camera.main.ScreenPointToRay(stateMachine.InputManager.MouseValue);
-
             Plane virtualPlane = new Plane(Vector3.up, stateMachine.transform.position);
 
             if (virtualPlane.Raycast(ray, out float hitDist))

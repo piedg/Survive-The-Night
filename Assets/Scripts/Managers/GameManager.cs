@@ -36,25 +36,30 @@ public class GameManager : MonoSingleton<GameManager>
 
     void HandleDeath()
     {
+        IsPause = true;
+     
         UIManager.Instance.EnableDeathPanel(true);
     }
 
     void HandleWin()
     {
-        UIManager.Instance.EnableWinningPanel(true);
+        IsPause = true;
         Time.timeScale = 0;
-    }
 
-    public void RestartGame()
-    {
-        SceneManager.LoadScene(1);
+        UIManager.Instance.EnableWinningPanel(true);
     }
 
     public void HandlePause()
     {
         IsPause = true;
         Time.timeScale = 0;
+
         UIManager.Instance.EnablePausePanel(true);
+    }
+
+    public void RestartGame()
+    {
+        SceneManager.LoadScene(1);
     }
 
     public void ResumeGame()

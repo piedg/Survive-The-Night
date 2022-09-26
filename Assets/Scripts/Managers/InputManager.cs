@@ -12,7 +12,6 @@ public class InputManager : MonoSingleton<InputManager>, Controls.IPlayerActions
     public bool IsShooting { get; private set; }
     public bool IsPause { get; private set; }
 
-    public event Action DodgeEvent;
     public event Action ActionEvent_1;
 
     private Controls controls;
@@ -38,12 +37,6 @@ public class InputManager : MonoSingleton<InputManager>, Controls.IPlayerActions
     public void OnLook(InputAction.CallbackContext context)
     {
         MouseValue = context.ReadValue<Vector2>();
-    }
-
-    public void OnDodge(InputAction.CallbackContext context)
-    {
-        if (!context.performed) { return; }
-        DodgeEvent?.Invoke();
     }
 
     public void OnShoot(InputAction.CallbackContext context)

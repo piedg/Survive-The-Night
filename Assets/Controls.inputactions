@@ -24,15 +24,6 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Dodge",
-                    "type": "Button",
-                    "id": "224ac3b7-2c3b-49fe-bb42-66347f68c674",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "Shoot",
                     "type": "Button",
                     "id": "f70ca8bf-232f-4570-a9f7-dbf8f4afa648",
@@ -124,28 +115,6 @@
                     "processors": "",
                     "groups": "Gamepad",
                     "action": "Move",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "5d32bc9a-071e-400b-91b6-80df4c229fbd",
-                    "path": "<Keyboard>/space",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard & Mouse",
-                    "action": "Dodge",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "bceda29c-44f5-4885-85bb-aeb4c8305a05",
-                    "path": "<Gamepad>/leftStickPress",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad",
-                    "action": "Dodge",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
