@@ -97,7 +97,8 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: 4dd37a4b516f6174c90c371e8886b0e3,
+    type: 2}
   m_LightingSettings: {fileID: 0}
 --- !u!196 &4
 NavMeshSettings:
@@ -1129,7 +1130,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   StartingTime: 7
   CurrentTime: 0
-  DayDurationInSeconds: 180
+  DayDurationInSeconds: 5
 --- !u!114 &416059351 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2804210532379729248, guid: 53c899602fe2db5439b538c639e4f50d,
@@ -2868,6 +2869,7 @@ MonoBehaviour:
   DamagePanelBackground: {fileID: 839091697}
   WinningPanel: {fileID: 1657999957}
   RestartGameBtn: {fileID: 268526144}
+  BackMainMenuBtn: {fileID: 2117642090}
 --- !u!1 &2117642088
 GameObject:
   m_ObjectHideFlags: 0
