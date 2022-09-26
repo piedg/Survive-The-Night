@@ -6,23 +6,11 @@ public class GameManager : MonoSingleton<GameManager>
 {
     [SerializeField] DayManager DayManager;
 
-    bool isPaused;
-
     PlayerStateMachine Player;
 
     public bool IsEndGame => DayManager?.Days == 2;
     public bool IsWinningState => ZombieSpawner.ZombiesInScene.Count == 0;
 
-
-    private void OnEnable()
-    {
-        InputManager.Instance.OnPauseButton += PauseGame;
-    }
-
-    private void OnDisable()
-    {
-        InputManager.Instance.OnPauseButton -= PauseGame;
-    }
 
     private void Start()
     {
@@ -32,8 +20,14 @@ public class GameManager : MonoSingleton<GameManager>
 
     void Update()
     {
-        if (Player.IsDead)
-            HandleDeath();
+        if(InputManager.Instance.IsPause)
+        {
+            HandlePause();
+        }
+
+        if(Player != null)
+            if (Player.IsDead)
+                HandleDeath();
 
         if (IsEndGame && IsWinningState)
             HandleWin();
@@ -55,15 +49,10 @@ public class GameManager : MonoSingleton<GameManager>
         SceneManager.LoadScene(1);
     }
 
-    public void PauseGame()
+    public void HandlePause()
     {
-        isPaused = !isPaused;
-
-        if(!isPaused)
-        {
-            Time.timeScale = 0;
-            UIManager.Instance.EnablePausePanel(true);
-        }
+        Time.timeScale = 0;
+        UIManager.Instance.EnablePausePanel(true);
     }
 
     public void ResumeGame()

@@ -10,10 +10,10 @@ public class InputManager : MonoSingleton<InputManager>, Controls.IPlayerActions
     public Vector2 MouseValue { get; private set; }
 
     public bool IsShooting { get; private set; }
+    public bool IsPause { get; private set; }
 
     public event Action DodgeEvent;
     public event Action ActionEvent_1;
-    public event Action OnPauseButton;
 
     private Controls controls;
 
@@ -66,7 +66,13 @@ public class InputManager : MonoSingleton<InputManager>, Controls.IPlayerActions
 
     public void OnPause(InputAction.CallbackContext context)
     {
-        if (!context.performed) { return; }
-        OnPauseButton?.Invoke();
+        if (context.performed)
+        {
+            IsPause = true;
+        }
+        else if (context.canceled)
+        {
+            IsPause = false;
+        }
     }
 }
