@@ -17,13 +17,12 @@ public class EnemyAttackingState : EnemyBaseState
 
     public override void Tick(float deltaTime)
     {
-
         if (stateMachine.Animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.4f && stateMachine.Animator.GetCurrentAnimatorStateInfo(0).normalizedTime < 1f) { Move(deltaTime); return; }
         RotateToPlayer(deltaTime);
 
         if (IsPlayingAnimation(stateMachine.Animator)) { return; }
 
-            stateMachine.SwitchState(new EnemyChasingState(stateMachine));
+        stateMachine.SwitchState(new EnemyChasingState(stateMachine));
     }
 
     public override void Exit() { }

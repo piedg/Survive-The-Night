@@ -14,17 +14,20 @@ public class EnemyStateMachine : StateMachine
     //[field: SerializeField] public CooldownManager CooldownManager { get; private set; }
     [field: SerializeField, Header("Movement Settings")] public float PlayerChasingRange { get; private set; }
     [field: SerializeField] public float MovementSpeed { get; private set; }
+    [field: SerializeField] public float MinMovementSpeed { get; private set; }
+    [field: SerializeField] public float MaxMovementSpeed { get; private set; }
     [field: SerializeField] public float RotationSpeed { get; private set; }
     [field: SerializeField, Header("Attack Settings")] public Damage AttackPoint { get; private set; }
     [field: SerializeField] public float AttackRange { get; private set; }
     [field: SerializeField] public int AttackDamage { get; private set; }
     [field: SerializeField] public GameObject BloodFX { get; private set; }
+
     public SkinnedMeshRenderer[] Skins;
     public GameObject Player { get; private set; }
 
     private void Start()
     {
-        MovementSpeed = Random.Range(MovementSpeed, 6f);
+        MovementSpeed = Random.Range(MinMovementSpeed, MaxMovementSpeed);
         Skins = GetComponentsInChildren<SkinnedMeshRenderer>();
 
         Skins[Random.Range(0, Skins.Length - 1)].enabled = true;

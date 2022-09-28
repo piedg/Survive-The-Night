@@ -58,16 +58,16 @@ public class UIManager : MonoSingleton<UIManager>
 
     public void FadeMe()
     {
-        StartCoroutine(DoFade());
+        StartCoroutine(DoFadeOut());
     }
 
-    IEnumerator DoFade()
+    IEnumerator DoFadeOut()
     {
         while (DamagePanelBackground.color.a > 0)
         {
             color.a -= Time.deltaTime / 2;
             DamagePanelBackground.color = color;
-            yield return new WaitForSeconds(0.05f);
+            yield return new WaitForSeconds(0.025f);
         }
         yield return null;
     }

@@ -5476,6 +5476,8 @@ MonoBehaviour:
   <Ragdoll>k__BackingField: {fileID: 7011746180946144249}
   <PlayerChasingRange>k__BackingField: 999
   <MovementSpeed>k__BackingField: 3
+  <MinMovementSpeed>k__BackingField: 3
+  <MaxMovementSpeed>k__BackingField: 6
   <RotationSpeed>k__BackingField: 6
   <AttackPoint>k__BackingField: {fileID: 398906794360110657}
   <AttackRange>k__BackingField: 1.5

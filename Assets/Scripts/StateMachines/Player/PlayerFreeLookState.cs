@@ -26,6 +26,8 @@ public class PlayerFreeLookState : PlayerBaseState
 
     public override void Tick(float deltaTime)
     {
+        if(GameManager.Instance.IsPause) { return; }
+
         direction = (stateMachine.InputManager.MovementValue.y * Vector3.forward) + (stateMachine.InputManager.MovementValue.x * Vector3.right);
 
         direction.Normalize();
@@ -98,7 +100,6 @@ public class PlayerFreeLookState : PlayerBaseState
         {
             if (Time.fixedTime > nextFire)
             {
-
                 nextFire = Time.fixedTime + stateMachine.FireRate;
 
                 GameObject projectile = stateMachine.ProjectilePool.GetObjectFromPool();

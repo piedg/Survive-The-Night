@@ -10,7 +10,6 @@ public class InputManager : MonoSingleton<InputManager>, Controls.IPlayerActions
     public Vector2 MouseValue { get; private set; }
 
     public bool IsShooting { get; private set; }
-    public bool IsPause { get; private set; }
 
     public event Action ActionEvent_1;
     public event Action PauseEvent;
@@ -25,10 +24,6 @@ public class InputManager : MonoSingleton<InputManager>, Controls.IPlayerActions
         controls.Player.Enable();
     }
 
-    private void Update()
-    {
-        Debug.Log(IsPause);
-    }
 
     void OnDestroy()
     {
@@ -47,29 +42,26 @@ public class InputManager : MonoSingleton<InputManager>, Controls.IPlayerActions
 
     public void OnShoot(InputAction.CallbackContext context)
     {
-        if (IsPause) { return; }
-
         if (context.performed)
         {
             IsShooting = true;
         }
-        else if(context.canceled)
+        else if (context.canceled)
         {
             IsShooting = false;
         }
+
     }
 
     public void OnAction_1(InputAction.CallbackContext context)
     {
-        if (!context.performed || IsPause) { return; }
+        if (!context.performed || GameManager.Instance.IsPause) { return; }
 
         ActionEvent_1?.Invoke();
     }
 
     public void OnPause(InputAction.CallbackContext context)
     {
-        IsPause = !IsPause;
-
         if (!context.performed) { return; }
 
         PauseEvent?.Invoke();

@@ -3225,9 +3225,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Congratulations
+  m_text: 'Congratulations!
 
-    You survived the night!'
+    You survived the night.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -5126,6 +5126,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.z
       value: -16.179996
+      objectReference: {fileID: 0}
+    - target: {fileID: 6802904217535677250, guid: 8956f50024460b741a8baea9183fc1bf,
+        type: 3}
+      propertyPath: field of view
+      value: 70
       objectReference: {fileID: 0}
     - target: {fileID: 6802904218823291472, guid: 8956f50024460b741a8baea9183fc1bf,
         type: 3}
