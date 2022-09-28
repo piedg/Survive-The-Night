@@ -43,7 +43,7 @@ public class ZombieSpawner : MonoBehaviour
                     ZombiesInScene.Add(zombie);
                 }
                 currentZombieToSpawn++;
-                Debug.Log("Zombie in scene " + ZombiesInScene.Count + " CurrentZombieToSpawn " + currentZombieToSpawn);
+                //Debug.Log("Zombie in scene " + ZombiesInScene.Count + " CurrentZombieToSpawn " + currentZombieToSpawn);
                 yield return new WaitForSeconds(time);
             }
             else
@@ -63,7 +63,6 @@ public class ZombieSpawner : MonoBehaviour
 
         return new Vector3(randomX, randomSpawnPointPos.y, randomZ);
     }
-
     public void ActiveSpawnPoint(string name)
     {
         spawnMap[name].gameObject.SetActive(true);

@@ -7,14 +7,13 @@ public class GameManager : MonoSingleton<GameManager>
 
     PlayerStateMachine Player;
 
-    bool IsInGame;
     public bool IsPause;
-    public bool IsEndGame => DayManager?.Days == 2;
-    public bool IsWinningState => ZombieSpawner.ZombiesInScene.Count == 0;
+    bool isEndGame => DayManager.Days == 2;
+    public bool IsEndGame { get; private set; }
+    bool isWinningState => ZombieSpawner.ZombiesInScene.Count == 0;
 
     private void Start()
     {
-        IsInGame = false;
 
         Player = FindObjectOfType<PlayerStateMachine>();
         Time.timeScale = 1;
@@ -22,25 +21,22 @@ public class GameManager : MonoSingleton<GameManager>
 
     private void OnEnable()
     {
-        if(IsInGame)
-            InputManager.Instance.PauseEvent += OnPause;
+        InputManager.Instance.PauseEvent += OnPause;
     }
 
     private void OnDisable()
     {
-        if (IsInGame)
-            InputManager.Instance.PauseEvent -= OnPause;
+        InputManager.Instance.PauseEvent -= OnPause;
     }
 
     void Update()
     {
         Time.timeScale = IsPause ? 0 : 1;
 
-        if(Player != null)
-            if (Player.IsDead)
+        if (Player.IsDead)
                 HandleDeath();
 
-        if (IsEndGame && IsWinningState)
+        if (isEndGame && isWinningState)
             HandleWin();
     }
 
@@ -57,11 +53,18 @@ public class GameManager : MonoSingleton<GameManager>
         UIManager.Instance.EnablePausePanel(false);
     }
 
-    public void OnPause()
+    public void ResumeGame()
     {
-        IsPause = !IsPause;
-        UIManager.Instance.EnablePausePanel(IsPause);
+        IsPause = false;
+        UIManager.Instance.EnablePausePanel(false);
     }
 
+    public void OnPause()
+    {
+        Debug.Log("Sono qui");
+        IsPause = !IsPause;
+        UIManager.Instance.EnablePausePanel(IsPause);
+      
+    }
 
 }

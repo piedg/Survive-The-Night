@@ -29,9 +29,9 @@ public class UIManager : MonoSingleton<UIManager>
 
         RestartGameOnWinBtn.onClick.AddListener(() => SceneController.Instance.RestartGame());
         BackMainMenuOnWinBtn.onClick.AddListener(() => SceneController.Instance.BackMainMenu());
-
-        ResumeOnPauseBtn.onClick.AddListener(() => SceneController.Instance.ResumeGame());
         BackMainMenuOnPauseBtn.onClick.AddListener(() => SceneController.Instance.BackMainMenu());
+
+        ResumeOnPauseBtn.onClick.AddListener(() => GameManager.Instance.ResumeGame());
     }
 
     public void EnableDeathPanel(bool enable)
