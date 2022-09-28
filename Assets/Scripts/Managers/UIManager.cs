@@ -27,10 +27,11 @@ public class UIManager : MonoSingleton<UIManager>
     {
         color = DamagePanelBackground.color;
 
-        RestartGameOnWinBtn.onClick.AddListener(() => GameManager.Instance.RestartGame());
-        BackMainMenuOnWinBtn.onClick.AddListener(() => GameManager.Instance.BackMainMenu());
-        ResumeOnPauseBtn.onClick.AddListener(() => GameManager.Instance.ResumeGame());
-        BackMainMenuOnPauseBtn.onClick.AddListener(() => GameManager.Instance.BackMainMenu());
+        RestartGameOnWinBtn.onClick.AddListener(() => SceneController.Instance.RestartGame());
+        BackMainMenuOnWinBtn.onClick.AddListener(() => SceneController.Instance.BackMainMenu());
+
+        ResumeOnPauseBtn.onClick.AddListener(() => SceneController.Instance.ResumeGame());
+        BackMainMenuOnPauseBtn.onClick.AddListener(() => SceneController.Instance.BackMainMenu());
     }
 
     public void EnableDeathPanel(bool enable)
