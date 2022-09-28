@@ -43,7 +43,7 @@ public class ZombieSpawner : MonoBehaviour
                     ZombiesInScene.Add(zombie);
                 }
                 currentZombieToSpawn++;
-                //Debug.Log("Zombie in scene " + ZombiesInScene.Count + " CurrentZombieToSpawn " + currentZombieToSpawn);
+                Debug.Log("Zombie in scene " + ZombiesInScene.Count + " CurrentZombieToSpawn " + currentZombieToSpawn);
                 yield return new WaitForSeconds(time);
             }
             else

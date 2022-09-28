@@ -33,11 +33,15 @@ public class PlayerStateMachine : StateMachine
     {
        Health.OnTakeDamage += HandleTakeDamage;
        Health.OnDie += HandleDie;
+
+       InputManager.PauseEvent += HandlePause;
     }
     private void OnDisable()
     {
        Health.OnTakeDamage -= HandleTakeDamage;
        Health.OnDie -= HandleDie;
+
+       InputManager.PauseEvent -= HandlePause;
     }
 
     void HandleTakeDamage()
@@ -51,5 +55,10 @@ public class PlayerStateMachine : StateMachine
         IsDead = true;
         Ragdoll.ToggleRagdoll(this);
         this.enabled = false;
+    }
+
+    void HandlePause()
+    {
+        GameManager.Instance.IsPause = true;
     }
 }

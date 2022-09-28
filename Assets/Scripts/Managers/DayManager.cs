@@ -34,6 +34,7 @@ public class DayManager : MonoBehaviour
             timeLapsed -= DayDurationInSeconds;
         }
 
+
         CurrentTime += Time.deltaTime / (DayDurationInSeconds / 24f);
         CurrentTime %= 24f;
         timePercent = CurrentTime / 24f;

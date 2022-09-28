@@ -18,8 +18,10 @@ public class UIManager : MonoSingleton<UIManager>
     public Button RestartGameOnWinBtn;
     public Button BackMainMenuOnWinBtn;
 
+    [Header("DeadPanel")]
     public GameObject DeathPanel;
-
+    public Button RestartGameOnDeadBtn;
+    public Button BackMainMenuOnDeadBtn;
 
     Color color;
 
@@ -29,9 +31,12 @@ public class UIManager : MonoSingleton<UIManager>
 
         RestartGameOnWinBtn.onClick.AddListener(() => SceneController.Instance.RestartGame());
         BackMainMenuOnWinBtn.onClick.AddListener(() => SceneController.Instance.BackMainMenu());
-        BackMainMenuOnPauseBtn.onClick.AddListener(() => SceneController.Instance.BackMainMenu());
+
+        RestartGameOnDeadBtn.onClick.AddListener(() => SceneController.Instance.RestartGame());
+        BackMainMenuOnDeadBtn.onClick.AddListener(() => SceneController.Instance.BackMainMenu());
 
         ResumeOnPauseBtn.onClick.AddListener(() => GameManager.Instance.ResumeGame());
+        BackMainMenuOnPauseBtn.onClick.AddListener(() => SceneController.Instance.BackMainMenu());
     }
 
     public void EnableDeathPanel(bool enable)

@@ -24,7 +24,6 @@ public class InputManager : MonoSingleton<InputManager>, Controls.IPlayerActions
         controls.Player.Enable();
     }
 
-
     void OnDestroy()
     {
         controls?.Player.Disable();
@@ -50,7 +49,6 @@ public class InputManager : MonoSingleton<InputManager>, Controls.IPlayerActions
         {
             IsShooting = false;
         }
-
     }
 
     public void OnAction_1(InputAction.CallbackContext context)
