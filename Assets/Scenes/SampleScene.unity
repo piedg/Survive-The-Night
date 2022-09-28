@@ -1241,8 +1241,8 @@ Light:
   serializedVersion: 10
   m_Type: 1
   m_Shape: 0
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 2
+  m_Color: {r: 0.8207547, g: 0.8207547, b: 0.8207547, a: 1}
+  m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -1254,7 +1254,7 @@ Light:
     m_Strength: 1
     m_Bias: 0.05
     m_NormalBias: 0.4
-    m_NearPlane: 0.2
+    m_NearPlane: 10
     m_CullingMatrixOverride:
       e00: 1
       e01: 0
@@ -1285,7 +1285,7 @@ Light:
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
-  m_ColorTemperature: 5000
+  m_ColorTemperature: 6000
   m_UseColorTemperature: 1
   m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
   m_UseBoundingSphereOverride: 0
@@ -3550,6 +3550,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DayManager: {fileID: 410087043}
+  IsPause: 0
 --- !u!4 &1516468813
 Transform:
   m_ObjectHideFlags: 0
@@ -5106,6 +5107,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6802904217009657574, guid: 8956f50024460b741a8baea9183fc1bf,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 10.000002
+      objectReference: {fileID: 0}
+    - target: {fileID: 6802904217009657574, guid: 8956f50024460b741a8baea9183fc1bf,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -16.179996
+      objectReference: {fileID: 0}
+    - target: {fileID: 6802904217535677249, guid: 8956f50024460b741a8baea9183fc1bf,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 10.000002
+      objectReference: {fileID: 0}
+    - target: {fileID: 6802904217535677249, guid: 8956f50024460b741a8baea9183fc1bf,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -16.179996
+      objectReference: {fileID: 0}
     - target: {fileID: 6802904218823291472, guid: 8956f50024460b741a8baea9183fc1bf,
         type: 3}
       propertyPath: m_RootOrder

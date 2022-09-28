@@ -96,10 +96,9 @@ public class PlayerFreeLookState : PlayerBaseState
     {
         if (stateMachine.InputManager.IsShooting)
         {
-            stateMachine.FireFX.gameObject.SetActive(true);
-
             if (Time.fixedTime > nextFire)
             {
+
                 nextFire = Time.fixedTime + stateMachine.FireRate;
 
                 GameObject projectile = stateMachine.ProjectilePool.GetObjectFromPool();
@@ -111,6 +110,7 @@ public class PlayerFreeLookState : PlayerBaseState
 
                 //Active from Pool
                 projectile.SetActive(true);
+                stateMachine.FireFX.gameObject.SetActive(true);
                 AudioController.Instance.PlayClip(stateMachine.FireSFX);
             }
         }

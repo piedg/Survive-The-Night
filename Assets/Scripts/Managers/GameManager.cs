@@ -12,19 +12,25 @@ public class GameManager : MonoSingleton<GameManager>
     public bool IsEndGame => DayManager?.Days == 2;
     public bool IsWinningState => ZombieSpawner.ZombiesInScene.Count == 0;
 
-
     private void Start()
     {
         Player = FindObjectOfType<PlayerStateMachine>();
         Time.timeScale = 1;
     }
 
+    private void OnEnable()
+    {
+        InputManager.Instance.PauseEvent += OnPause;
+    }
+
+    private void OnDisable()
+    {
+        InputManager.Instance.PauseEvent -= OnPause;
+    }
+
     void Update()
     {
-        if(InputManager.Instance.IsPause)
-        {
-            HandlePause();
-        }
+        Time.timeScale = IsPause ? 0 : 1;
 
         if(Player != null)
             if (Player.IsDead)
@@ -37,24 +43,20 @@ public class GameManager : MonoSingleton<GameManager>
     void HandleDeath()
     {
         IsPause = true;
-     
         UIManager.Instance.EnableDeathPanel(true);
     }
 
     void HandleWin()
     {
         IsPause = true;
-        Time.timeScale = 0;
-
         UIManager.Instance.EnableWinningPanel(true);
+        UIManager.Instance.EnablePausePanel(false);
     }
 
-    public void HandlePause()
+    public void OnPause()
     {
-        IsPause = true;
-        Time.timeScale = 0;
-
-        UIManager.Instance.EnablePausePanel(true);
+        IsPause = !IsPause;
+        UIManager.Instance.EnablePausePanel(IsPause);
     }
 
     public void RestartGame()
@@ -65,8 +67,6 @@ public class GameManager : MonoSingleton<GameManager>
     public void ResumeGame()
     {
         IsPause = false;
-
-        Time.timeScale = 1;
         UIManager.Instance.EnablePausePanel(false);
     }
 

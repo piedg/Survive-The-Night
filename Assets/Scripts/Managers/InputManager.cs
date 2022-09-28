@@ -13,6 +13,7 @@ public class InputManager : MonoSingleton<InputManager>, Controls.IPlayerActions
     public bool IsPause { get; private set; }
 
     public event Action ActionEvent_1;
+    public event Action PauseEvent;
 
     private Controls controls;
 
@@ -22,6 +23,11 @@ public class InputManager : MonoSingleton<InputManager>, Controls.IPlayerActions
         controls.Player.SetCallbacks(this);
 
         controls.Player.Enable();
+    }
+
+    private void Update()
+    {
+        Debug.Log(IsPause);
     }
 
     void OnDestroy()
@@ -41,7 +47,7 @@ public class InputManager : MonoSingleton<InputManager>, Controls.IPlayerActions
 
     public void OnShoot(InputAction.CallbackContext context)
     {
-        if (GameManager.Instance.IsPause) { return; }
+        if (IsPause) { return; }
 
         if (context.performed)
         {
@@ -55,21 +61,17 @@ public class InputManager : MonoSingleton<InputManager>, Controls.IPlayerActions
 
     public void OnAction_1(InputAction.CallbackContext context)
     {
-        if (GameManager.Instance.IsPause) { return; }
+        if (!context.performed || IsPause) { return; }
 
-        if (!context.performed) { return; }
         ActionEvent_1?.Invoke();
     }
 
     public void OnPause(InputAction.CallbackContext context)
     {
-        if (context.performed)
-        {
-            IsPause = true;
-        }
-        else if (context.canceled)
-        {
-            IsPause = false;
-        }
+        IsPause = !IsPause;
+
+        if (!context.performed) { return; }
+
+        PauseEvent?.Invoke();
     }
 }
