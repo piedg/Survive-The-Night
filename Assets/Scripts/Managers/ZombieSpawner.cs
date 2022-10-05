@@ -21,7 +21,11 @@ public class ZombieSpawner : MonoBehaviour
 
         foreach (var spawnPoint in spawnPoints)
         {
-            spawnMap.Add(spawnPoint.name, spawnPoint);
+            if(spawnPoint.gameObject.activeSelf)
+            {
+                Debug.Log(spawnPoint.gameObject.activeSelf);
+                spawnMap.Add(spawnPoint.name, spawnPoint);
+            }
         }
 
         StartCoroutine(Spawn(time));
@@ -63,9 +67,11 @@ public class ZombieSpawner : MonoBehaviour
 
         return new Vector3(randomX, randomSpawnPointPos.y, randomZ);
     }
-    public void ActiveSpawnPoint(string name)
+
+    public void ActiveSpawnPoint(GameObject spawnPoint)
     {
-        spawnMap[name].gameObject.SetActive(true);
+        spawnMap.Add(spawnPoint.name, spawnPoint.transform);
+        spawnPoint.SetActive(true);
     }
 
 }

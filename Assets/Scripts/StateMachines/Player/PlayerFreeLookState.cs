@@ -5,7 +5,8 @@ using UnityEngine.InputSystem;
 
 public class PlayerFreeLookState : PlayerBaseState
 {
-    private readonly int FreeLookBlendTreeHash = Animator.StringToHash("FreeLookBlendTree");
+    private readonly int RifleLocomotionHash = Animator.StringToHash("RifleLocomotion");
+    private readonly int PistolLocomotionHash = Animator.StringToHash("PistolLocomotion");
     private readonly int FreeLookForwardHash = Animator.StringToHash("Forward");
     private readonly int FreeLookRightHash = Animator.StringToHash("Right");
 
@@ -16,17 +17,21 @@ public class PlayerFreeLookState : PlayerBaseState
 
     float forwardAmount;
     float rightAmount;
-    public PlayerFreeLookState(PlayerStateMachine stateMachine) : base(stateMachine) { }
+
+    public PlayerFreeLookState(PlayerStateMachine stateMachine) : base(stateMachine)
+    {
+    }
 
     public override void Enter()
     {
         stateMachine.InputManager.ActionEvent_1 += OnAction_1;
-        stateMachine.Animator.CrossFadeInFixedTime(FreeLookBlendTreeHash, CrossFadeDuration);
     }
 
     public override void Tick(float deltaTime)
     {
         if(GameManager.Instance.IsPause) { return; }
+
+        SetLocomotion();
 
         direction = (stateMachine.InputManager.MovementValue.y * Vector3.forward) + (stateMachine.InputManager.MovementValue.x * Vector3.right);
 
@@ -100,29 +105,42 @@ public class PlayerFreeLookState : PlayerBaseState
         {
             if (Time.fixedTime > nextFire)
             {
-                nextFire = Time.fixedTime + stateMachine.FireRate;
+                nextFire = Time.fixedTime + stateMachine.CurrentWeapon.FiringRate;
 
                 GameObject projectile = stateMachine.ProjectilePool.GetObjectFromPool();
 
-                //Set projectile 
                 projectile.transform.SetPositionAndRotation(stateMachine.FirePoint.transform.position, stateMachine.FirePoint.transform.rotation);
 
-                projectile.GetComponent<Damage>().SetAttack(stateMachine.DamageAmount);
-
-                //Active from Pool
+                projectile.GetComponent<Damage>().SetAttack(stateMachine.CurrentWeapon.Damage);
                 projectile.SetActive(true);
-                stateMachine.FireFX.gameObject.SetActive(true);
+
+                //stateMachine.FireFX.gameObject.SetActive(true);
                 AudioController.Instance.PlayClip(stateMachine.FireSFX);
             }
         }
         else
         {
-            stateMachine.FireFX.gameObject.SetActive(false);
+            //stateMachine.FireFX.gameObject.SetActive(false);
         }
     }
 
     private void OnAction_1()
     {
         stateMachine.Flashlight.SetActive(!stateMachine.Flashlight.activeSelf);
+    }
+
+    private void SetLocomotion()
+    {
+        switch (stateMachine.CurrentWeapon.Type)
+        {
+            case eWeaponType.Rifle:
+                stateMachine.Animator.Play(RifleLocomotionHash);
+                break;
+            case eWeaponType.Pistol:
+                stateMachine.Animator.Play(PistolLocomotionHash);
+                break;
+            default:
+                break;
+        }
     }
 }
