@@ -115,7 +115,7 @@ public class PlayerFreeLookState : PlayerBaseState
                 projectile.SetActive(true);
 
                 //stateMachine.FireFX.gameObject.SetActive(true);
-                AudioController.Instance.PlayClip(stateMachine.FireSFX);
+                AudioController.Instance.PlayClip(stateMachine.CurrentWeapon.FireSFX);
             }
         }
         else

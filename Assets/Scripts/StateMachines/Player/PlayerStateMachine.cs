@@ -17,9 +17,6 @@ public class PlayerStateMachine : StateMachine
     [field: SerializeField] public Transform WeaponHolder { get; private set; }
     [field: SerializeField] public GameObject WeaponPrefab { get; set; }
     [field: SerializeField] public Weapon CurrentWeapon { get; private set; }
-    [field: SerializeField] public float FireRate { get; private set; }
-    [field: SerializeField] public AudioClip FireSFX { get; private set; }
-    [field: SerializeField] public int DamageAmount { get; private set; }
     [field: SerializeField] public ObjectPool ProjectilePool { get; private set; }
     [field: SerializeField] public GameObject Flashlight { get; private set; }
     [field: SerializeField] public bool IsDead { get; private set; }
@@ -38,10 +35,6 @@ public class PlayerStateMachine : StateMachine
     {
         Instantiate(WeaponPrefab, WeaponHolder);
         CurrentWeapon = WeaponHolder.GetComponentInChildren<Weapon>();
-        DamageAmount = CurrentWeapon.Damage;
-        FireRate = CurrentWeapon.FiringRate;
-        Debug.Log(CurrentWeapon.FireSFX);
-        FireSFX = CurrentWeapon.FireSFX;
     }
 
     public void SetCurrentWeapon()
@@ -50,9 +43,6 @@ public class PlayerStateMachine : StateMachine
         GameObject weapon = Instantiate(WeaponPrefab, WeaponHolder);
         WeaponPrefab = weapon;
         CurrentWeapon = weapon.GetComponent<Weapon>();
-        DamageAmount = CurrentWeapon.Damage;
-        FireRate = CurrentWeapon.FiringRate;
-        FireSFX = CurrentWeapon.FireSFX;
     }
 
     private void OnEnable()

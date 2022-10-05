@@ -11,7 +11,7 @@ public class SpawnerTrigger : MonoBehaviour
     {
         if(other.CompareTag("Player"))
         {
-            ZombieSpawner.ActiveSpawnPoint(SpawnPoint);
+            ZombieSpawner.ActiveSpawnPoint(SpawnPoint.transform);
             gameObject.SetActive(false);
         }
     }

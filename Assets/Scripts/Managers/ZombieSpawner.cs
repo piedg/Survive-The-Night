@@ -5,7 +5,8 @@ using UnityEngine;
 public class ZombieSpawner : MonoBehaviour
 {
     Transform[] spawnPoints;
-    Dictionary<string, Transform> spawnMap = new Dictionary<string, Transform>();
+    List<Transform> enabledSpawnPoints = new List<Transform>();
+
     public GameObject Zombie;
     public ObjectPool ZombiePool;
     public static List<GameObject> ZombiesInScene = new List<GameObject>();
@@ -23,8 +24,7 @@ public class ZombieSpawner : MonoBehaviour
         {
             if(spawnPoint.gameObject.activeSelf)
             {
-                Debug.Log(spawnPoint.gameObject.activeSelf);
-                spawnMap.Add(spawnPoint.name, spawnPoint);
+                enabledSpawnPoints.Add(spawnPoint);
             }
         }
 
@@ -41,7 +41,7 @@ public class ZombieSpawner : MonoBehaviour
                 for (int i = 1; i <= randomNumber; i++)
                 {
                     GameObject zombie = ZombiePool.GetObjectFromPool();
-                    zombie.transform.SetPositionAndRotation(GetRandomSpawnPoint(spawnPoints), Quaternion.identity);
+                    zombie.transform.SetPositionAndRotation(GetRandomSpawnPoint(enabledSpawnPoints), Quaternion.identity);
 
                     zombie.SetActive(true);
                     ZombiesInScene.Add(zombie);
@@ -58,9 +58,9 @@ public class ZombieSpawner : MonoBehaviour
         }
     }
 
-    Vector3 GetRandomSpawnPoint(Transform[] spawnPoints)
+    Vector3 GetRandomSpawnPoint(List<Transform> availableSpawnPoints)
     {
-        Vector3 randomSpawnPointPos = spawnPoints[Random.Range(0, spawnPoints.Length)].position;
+        Vector3 randomSpawnPointPos = availableSpawnPoints[Random.Range(0, availableSpawnPoints.Count)].position;
 
         float randomX = Random.Range(randomSpawnPointPos.x - 2f, randomSpawnPointPos.x + 2f);
         float randomZ = Random.Range(randomSpawnPointPos.z - 2f, randomSpawnPointPos.z + 2f);
@@ -68,10 +68,10 @@ public class ZombieSpawner : MonoBehaviour
         return new Vector3(randomX, randomSpawnPointPos.y, randomZ);
     }
 
-    public void ActiveSpawnPoint(GameObject spawnPoint)
+    public void ActiveSpawnPoint(Transform newSpawnPoint)
     {
-        spawnMap.Add(spawnPoint.name, spawnPoint.transform);
-        spawnPoint.SetActive(true);
+        enabledSpawnPoints.Add(newSpawnPoint);
+        newSpawnPoint.gameObject.SetActive(true);
     }
 
 }
