@@ -1301,10 +1301,6 @@ MonoBehaviour:
   <WeaponPrefab>k__BackingField: {fileID: 1800674581607505359, guid: f756c1736628d454ba4afc323582a2c1,
     type: 3}
   <CurrentWeapon>k__BackingField: {fileID: 0}
-  <FireRate>k__BackingField: 0
-  <FireSFX>k__BackingField: {fileID: 8300000, guid: 0dbe91efb8ee94e6695ef0f552d202ce,
-    type: 3}
-  <DamageAmount>k__BackingField: 0
   <ProjectilePool>k__BackingField: {fileID: 0}
   <Flashlight>k__BackingField: {fileID: 1199552165}
   <IsDead>k__BackingField: 0
