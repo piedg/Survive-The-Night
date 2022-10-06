@@ -13,6 +13,11 @@ public class UIManager : MonoSingleton<UIManager>
     public Button ResumeOnPauseBtn;
     public Button SettingsOnPauseBtn;
 
+    public GameObject AudioController;
+    public GameObject MainThemeController;
+    public Toggle AudioToggle;
+    public bool AudioOn;
+
     [Header("WinningPanel")]
     public GameObject WinningPanel;
     public Button RestartGameOnWinBtn;
@@ -24,6 +29,16 @@ public class UIManager : MonoSingleton<UIManager>
     public Button BackMainMenuOnDeadBtn;
 
     Color color;
+
+    private void OnEnable()
+    {
+        AudioToggle.onValueChanged.AddListener(SetMasterAudio);
+    }
+
+    private void OnDisable()
+    {
+        AudioToggle.onValueChanged.RemoveListener(SetMasterAudio);
+    }
 
     private void Start()
     {
@@ -37,6 +52,14 @@ public class UIManager : MonoSingleton<UIManager>
 
         ResumeOnPauseBtn.onClick.AddListener(() => GameManager.Instance.ResumeGame());
         BackMainMenuOnPauseBtn.onClick.AddListener(() => SceneController.Instance.BackMainMenu());
+
+        AudioOn = true;
+    }
+
+    public void SetMasterAudio(bool value)
+    {
+        AudioController.GetComponent<AudioSource>().volume = value ? 0.25f : 0;
+        MainThemeController.GetComponent<AudioSource>().volume = value ? 0.25f : 0;
     }
 
     public void EnableDeathPanel(bool enable)
