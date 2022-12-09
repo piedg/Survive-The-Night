@@ -186,6 +186,17 @@
                 },
                 {
                     "name": "",
+                    "id": "4af7ea99-ba8d-449a-834c-83bf1dc1af94",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Action_1",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "ca6ae23e-65b1-490f-abf7-6366d405327b",
                     "path": "<Keyboard>/escape",
                     "interactions": "",
