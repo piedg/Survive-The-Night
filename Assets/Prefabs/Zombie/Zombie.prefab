@@ -5479,10 +5479,11 @@ MonoBehaviour:
   <MinMovementSpeed>k__BackingField: 3
   <MaxMovementSpeed>k__BackingField: 6
   <RotationSpeed>k__BackingField: 6
+  <ViewAngle>k__BackingField: 30
   <AttackPoint>k__BackingField: {fileID: 398906794360110657}
   <AttackRange>k__BackingField: 1.5
   <AttackDamage>k__BackingField: 1
-  <BloodFX>k__BackingField: {fileID: 3589871490463050741, guid: a5ef31170d878b24a8376f01159b7467,
+  <BloodFX>k__BackingField: {fileID: 4553287630450876385, guid: c500ce09295584983b0c840247d903f3,
     type: 3}
   Skins: []
 --- !u!143 &4686557855605296353

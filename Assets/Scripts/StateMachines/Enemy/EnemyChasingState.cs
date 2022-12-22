@@ -29,10 +29,10 @@ public class EnemyChasingState : EnemyBaseState
             stateMachine.SwitchState(new EnemyAttackingState(stateMachine));
             return;
         } 
-
+       
         MoveToPlayer(deltaTime);
-        RotateToPlayer(deltaTime);
-
+        FaceForward(deltaTime);
+      
         stateMachine.Animator.SetFloat(SpeedHash, 1f, AnimatorDumpTime, deltaTime);
     }
 

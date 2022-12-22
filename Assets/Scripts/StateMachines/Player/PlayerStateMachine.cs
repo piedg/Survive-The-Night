@@ -25,7 +25,6 @@ public class PlayerStateMachine : StateMachine
 
     private void Start()
     {
-        IsDead = false;
         SetDefaultWeapon();
 
         SwitchState(new PlayerFreeLookState(this));
@@ -72,9 +71,11 @@ public class PlayerStateMachine : StateMachine
 
     void HandleDie()
     {
-        IsDead = true;
-        Ragdoll.ToggleRagdoll(this);
-        this.enabled = false;
+        if(Health.IsDead)
+        {
+            UIManager.Instance.EnableDeathPanel(true);
+            SwitchState(new PlayerDeadState(this));
+        }
     }
 
     void HandlePause()

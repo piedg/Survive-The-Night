@@ -31,6 +31,7 @@ public abstract class EnemyBaseState : State
 
         stateMachine.transform.rotation = Quaternion.LookRotation(lookPos);
     }
+
     protected void RotateToPlayer(float deltaTime)
     {
         if (stateMachine.Player == null) { return; }
@@ -39,6 +40,42 @@ public abstract class EnemyBaseState : State
 
         stateMachine.transform.rotation = Quaternion.Slerp(stateMachine.transform.rotation, targetRotation, stateMachine.RotationSpeed * deltaTime);
     }
+
+    protected void FaceForward(float deltaTime)
+    {
+        if (stateMachine.Agent.velocity.sqrMagnitude > Mathf.Epsilon)
+        {
+            var targetRotation = Quaternion.LookRotation(stateMachine.Agent.velocity.normalized);
+
+            stateMachine.transform.rotation = Quaternion.Slerp(stateMachine.transform.rotation, targetRotation, stateMachine.RotationSpeed * deltaTime);
+        }
+    }
+
+    protected bool IsInViewRange()
+    {
+        Vector3 toPlayer = stateMachine.Player.transform.position - stateMachine.transform.position;
+
+        Vector3 localDirection = stateMachine.transform.InverseTransformDirection(toPlayer);
+
+        RaycastHit hit;
+
+        Debug.DrawRay(stateMachine.transform.position + Vector3.up, toPlayer + Vector3.up, Color.red);
+
+        float angle = Mathf.Atan2(localDirection.z, localDirection.x) * Mathf.Rad2Deg - 90;
+
+        if (angle < stateMachine.ViewAngle && angle > -stateMachine.ViewAngle)
+        {
+            if (Physics.Raycast(stateMachine.transform.position + (Vector3.up / 2), toPlayer + Vector3.up, out hit, Mathf.Infinity))
+            {
+                if (hit.collider.TryGetComponent(out PlayerStateMachine Player))
+                {
+                    return Player != null;
+                }
+            }
+        }
+        return false;
+    }
+
 
     protected bool IsInChaseRange()
     {

@@ -17,6 +17,7 @@ public class EnemyStateMachine : StateMachine
     [field: SerializeField] public float MinMovementSpeed { get; private set; }
     [field: SerializeField] public float MaxMovementSpeed { get; private set; }
     [field: SerializeField] public float RotationSpeed { get; private set; }
+    [field: SerializeField] public float ViewAngle { get; private set; }
     [field: SerializeField, Header("Attack Settings")] public Damage AttackPoint { get; private set; }
     [field: SerializeField] public float AttackRange { get; private set; }
     [field: SerializeField] public int AttackDamage { get; private set; }
@@ -65,7 +66,6 @@ public class EnemyStateMachine : StateMachine
 
     private void HandleDie()
     {
-        // TODO: switch to Die State
-        SwitchState(new EnemyDeathState(this));
+        SwitchState(new EnemyDeadState(this));
     }
 }
