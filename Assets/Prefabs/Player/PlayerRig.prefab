@@ -372,8 +372,8 @@ Light:
   m_Color: {r: 0.7075472, g: 0.67083484, b: 0.67083484, a: 1}
   m_Intensity: 10
   m_Range: 20
-  m_SpotAngle: 175
-  m_InnerSpotAngle: 100
+  m_SpotAngle: 130
+  m_InnerSpotAngle: 75
   m_CookieSize: 10
   m_Shadows:
     m_Type: 0
@@ -440,37 +440,6 @@ MonoBehaviour:
   m_ShadowLayerMask: 1
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
---- !u!1 &5073825418076659405
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 999541384392628876}
-  m_Layer: 6
-  m_Name: Lightining
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &999541384392628876
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5073825418076659405}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 6807695568585930592}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6802904216830555250
 GameObject:
   m_ObjectHideFlags: 0
@@ -1548,7 +1517,6 @@ Transform:
   - {fileID: 636673148}
   - {fileID: 62411197}
   - {fileID: 1199552166}
-  - {fileID: 999541384392628876}
   m_Father: {fileID: 6802904218823291472}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

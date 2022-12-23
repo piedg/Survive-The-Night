@@ -1,12 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerFreeLookState : PlayerBaseState
 {
-    private readonly int RifleLocomotionHash = Animator.StringToHash("RifleLocomotion");
     private readonly int PistolLocomotionHash = Animator.StringToHash("PistolLocomotion");
+    private readonly int RifleLocomotionHash = Animator.StringToHash("RifleLocomotion");
+
     private readonly int FreeLookForwardHash = Animator.StringToHash("Forward");
     private readonly int FreeLookRightHash = Animator.StringToHash("Right");
 
@@ -18,9 +17,7 @@ public class PlayerFreeLookState : PlayerBaseState
     float forwardAmount;
     float rightAmount;
 
-    public PlayerFreeLookState(PlayerStateMachine stateMachine) : base(stateMachine)
-    {
-    }
+    public PlayerFreeLookState(PlayerStateMachine stateMachine) : base(stateMachine) { }
 
     public override void Enter()
     {
@@ -105,6 +102,8 @@ public class PlayerFreeLookState : PlayerBaseState
         {
             if (Time.fixedTime > nextFire)
             {
+                HandleShootingAnimation();
+
                 nextFire = Time.fixedTime + stateMachine.CurrentWeapon.FiringRate;
 
                 GameObject projectile = stateMachine.ProjectilePool.GetObjectFromPool();
@@ -114,13 +113,13 @@ public class PlayerFreeLookState : PlayerBaseState
                 projectile.GetComponent<Damage>().SetAttack(stateMachine.CurrentWeapon.Damage);
                 projectile.SetActive(true);
 
-                //stateMachine.FireFX.gameObject.SetActive(true);
                 AudioController.Instance.PlayClip(stateMachine.CurrentWeapon.FireSFX);
             }
         }
         else
         {
-            //stateMachine.FireFX.gameObject.SetActive(false);
+            stateMachine.Animator.SetLayerWeight(1, 0);
+            stateMachine.Animator.SetLayerWeight(2, 0);
         }
     }
 
@@ -135,9 +134,30 @@ public class PlayerFreeLookState : PlayerBaseState
         {
             case eWeaponType.Rifle:
                 stateMachine.Animator.Play(RifleLocomotionHash);
+                stateMachine.Animator.SetLayerWeight(1, 1);
+
                 break;
             case eWeaponType.Pistol:
                 stateMachine.Animator.Play(PistolLocomotionHash);
+                stateMachine.Animator.SetLayerWeight(2, 1);
+
+                break;
+            default:
+                break;
+        }
+    }
+
+    private void HandleShootingAnimation()
+    {
+        switch (stateMachine.CurrentWeapon.Type)
+        {
+            case eWeaponType.Rifle:
+                stateMachine.Animator.SetLayerWeight(1, 1);
+
+                break;
+            case eWeaponType.Pistol:
+                stateMachine.Animator.SetLayerWeight(2, 1);
+
                 break;
             default:
                 break;
