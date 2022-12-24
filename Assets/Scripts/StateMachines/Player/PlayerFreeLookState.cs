@@ -98,26 +98,35 @@ public class PlayerFreeLookState : PlayerBaseState
 
     private void OnShoot()
     {
+        HandleShootingAnimation();
+
         if (stateMachine.InputManager.IsShooting)
         {
             if (Time.fixedTime > nextFire)
             {
-                HandleShootingAnimation();
-
                 nextFire = Time.fixedTime + stateMachine.CurrentWeapon.FiringRate;
+
+                stateMachine.MuzzleFX.gameObject.SetActive(true);
+                stateMachine.MuzzleFX.Play();
 
                 GameObject projectile = stateMachine.ProjectilePool.GetObjectFromPool();
 
                 projectile.transform.SetPositionAndRotation(stateMachine.FirePoint.transform.position, stateMachine.FirePoint.transform.rotation);
-
+   
                 projectile.GetComponent<Damage>().SetAttack(stateMachine.CurrentWeapon.Damage);
                 projectile.SetActive(true);
-
                 AudioController.Instance.PlayClip(stateMachine.CurrentWeapon.FireSFX);
+            }
+            else
+            {
+                // time between shots
+
             }
         }
         else
         {
+            // not shooting at all
+            stateMachine.MuzzleFX.gameObject.SetActive(false);
             stateMachine.Animator.SetLayerWeight(1, 0);
             stateMachine.Animator.SetLayerWeight(2, 0);
         }

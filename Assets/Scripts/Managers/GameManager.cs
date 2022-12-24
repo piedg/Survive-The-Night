@@ -25,9 +25,6 @@ public class GameManager : MonoSingleton<GameManager>
         if (IsPause)
             HandlePause();
 
-        if (Player.IsDead)
-            HandleDeath();
-
         if (isEndGame && isWinningState)
             HandleWin();
     }

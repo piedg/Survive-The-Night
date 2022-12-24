@@ -8362,6 +8362,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96d332ab3dbfaaf40bdd9745ff0b19f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  time: 0.05
 --- !u!108 &4195368322334349254
 Light:
   m_ObjectHideFlags: 0
@@ -39817,6 +39818,7 @@ MonoBehaviour:
   <MinMovementSpeed>k__BackingField: 0
   <MaxMovementSpeed>k__BackingField: 0
   <RotationSpeed>k__BackingField: 6
+  <ViewAngle>k__BackingField: 0
   <AttackPoint>k__BackingField: {fileID: 398906793981636658}
   <AttackRange>k__BackingField: 1.5
   <AttackDamage>k__BackingField: 1
@@ -67855,7 +67857,7 @@ Animator:
   m_GameObject: {fileID: 7229594660080305889}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 318840a7e38980943bb4c508fa842265, type: 3}
-  m_Controller: {fileID: 9100000, guid: 970982a4d36105542a3013b0fc94f599, type: 2}
+  m_Controller: {fileID: 9100000, guid: e1f4bd138274a40a4a2059de500d24c5, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

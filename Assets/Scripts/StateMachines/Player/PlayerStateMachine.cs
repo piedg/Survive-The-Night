@@ -19,12 +19,14 @@ public class PlayerStateMachine : StateMachine
     [field: SerializeField] public Weapon CurrentWeapon { get; private set; }
     [field: SerializeField] public ObjectPool ProjectilePool { get; private set; }
     [field: SerializeField] public GameObject Flashlight { get; private set; }
-    [field: SerializeField] public bool IsDead { get; private set; }
+    [field: SerializeField] public ParticleSystem MuzzleFX { get; private set; }
 
     public Action OnPickWeapon;
 
     private void Start()
     {
+        MuzzleFX.transform.SetPositionAndRotation(FirePoint.transform.position, FirePoint.transform.rotation);
+
         SetDefaultWeapon();
 
         SwitchState(new PlayerFreeLookState(this));
@@ -38,6 +40,7 @@ public class PlayerStateMachine : StateMachine
 
     public void SetCurrentWeapon()
     {
+
         Destroy(CurrentWeapon.gameObject);
         GameObject weapon = Instantiate(WeaponPrefab, WeaponHolder);
         WeaponPrefab = weapon;
